@@ -4,9 +4,12 @@ name: deploy-dashboard
   push:
     branches:
       - master
+    paths:
+      - "packages/dashboard/**"
+
 defaults:
   run:
-    working-directory: packages/dashboard
+    working-directory: packages/dashboard/**
 
 jobs:
   build:
