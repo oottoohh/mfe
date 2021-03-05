@@ -1,0 +1,697 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+
+        var __CACHE_BUSTED_STYLES = [
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+            "../../../Content/Site.css",
+           "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css",
+        ];
+
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/localStore.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Views/OnlineTesting/SubTest/SubTestSampleNormal.js",
+            "../../../Scripts/Views/OnlineTesting/SubTest/SubTestSampleNormalViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js",
+            "../../../Scripts/Views/OnlineTesting/SubTest/SubTestMultipleForm.js"
+        ];
+
+       
+    </script>
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+
+    <title>Sample Category</title>
+    <style>
+        .box-col {
+            width: 250px;
+            margin-bottom: -20px;
+        }
+
+            .box-col .options {
+                margin-bottom: 20px;
+            }
+
+        .box .k-textbox {
+            width: 80px;
+        }
+
+        .backImage {
+            width: 135px;
+            height: 100px;
+            background-image: url(../../../Images/add-picture.jpg);
+            border: thin;
+            background-repeat: no-repeat;
+        }
+
+        .btn_delete {
+            margin-right: 10px;
+            background-color: #ee6060;
+            border-color: #ee6060;
+            margin: 5px;
+        }
+
+        .btn_preview {
+            background-color: #2ea769;
+            border-color: #2ea769;
+            margin: 5px;
+        }
+
+        .btn-groub-action {
+            display: flex;
+            justify-content: space-between;
+            float: right;
+        }
+
+        .btn_add {
+            margin: 10px !important;
+        }
+
+        span.k-link.k-header {
+            padding: 10px !important;
+        }
+
+        .swal-text {
+            text-align: center;
+        }
+
+        .k-checkbox.form-check {
+            margin-left: 88px !important;
+        }
+
+        .k-checkbox.form-checkWM {
+            margin-left: 55px !important;
+        }
+
+        .k-checkbox.form-checkVM {
+            margin-left: 48px !important;
+        }
+
+        .k-widget.k-combobox.k-header.WorkingMemoryLayout {
+            margin-top: 30px;
+            margin-left: 55px;
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left: 21%; font-size: 20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Add Sub Test
+        </span>
+    </div>
+    <br />
+    <div id="popUpConfirmSave"></div>
+    <div class="demo-section k-content">
+        <div id="content" class="toogle_header">
+            <ul class="form-content">
+                <li>
+                    <label>Sub Test Code<span class="mandatory">*</span></label>
+                    <input id="SubTestCode" type="text" name="SubTestCode" data-bind="value: SubTestCode" style="width: 19.69%;" disabled="disabled" />
+
+                    <label style="padding-left: 10%">Select Test<span class="mandatory">*</span></label>
+                    <input id="TestTypeName" name="TestTypeName" type="text" class="" style="width: 150px;" data-bind="value: TestTypeName" />
+                    <input id="TestToolName" name="TestToolName" data-type="combobox" style="width: 150px;" data-bind="value: TestToolName" />
+                </li>
+                <li>
+                    <label>Sub Test Name<span class="mandatory">*</span></label>
+                    <input id="SubTestName" name="SubTestName" type="text" class="k-textbox SubTestName" data-bind="value: SubTestName" style="width: 20%;" placeholder="Input Sub Test Name" />
+
+                    <label style="padding-left: 117px">Duration<span class="mandatory">*</span></label>
+                    <input id="Duration" name="Duration" type="number" class="k-textbox" data-bind="value: Duration" style="width: 5%;" />
+                    <span>Minutes</span>
+                    <input id="DurationSecond" name="DurationSecond" type="number" class="k-textbox" data-bind="value: DurationSecond" style="width: 5%; margin-left: 45px;" />
+                    <span>Seconds </span>
+                </li>
+                <li>
+                    <label>Initial Sub Test Code<span class="mandatory">*</span></label>
+                    <input id="Description" name="Description" type="text" class="k-textbox Description" data-bind="value: Description" style="width: 10%;" placeholder="Input Initial Sub Test Code" />
+                    <!--<textarea id="Description" name="Description" data-bind="value:Description" rows="3" class="k-textbox" style="width: 20%;" placeholder="Description"></textarea>-->
+                    <label style="padding-left: 20%">Display Status</label>
+                    <input type="checkbox" name="isDisplay" id="displayStatus" class="k-checkbox" data-role="boolean" data-bind="checked: isDisplay" checked="checked" onchange="Display(this)" />
+                    Active
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--<br />-->
+    <div id="tabstrip">
+        <ul>
+            <li id="InstructionTabs">Instruction
+            </li>
+            <li class="k-state-active" id="SampleTabs">Sample
+            </li>
+            <li id="ConfirmationTabs">Confirmation
+            </li>
+        </ul>
+
+        <!-- Views Instruction-->
+        <div>
+            <div class="demo-section k-content">
+                <div id="content2" class="toogle_header">
+                    <ul class="form-content">
+                        <li>
+                            <label>Title<span class="mandatory">*</span></label>
+                            <input id="SubTestTitle" type="text" name="SubTestTitle" class="k-textbox SubTestTitle" data-bind="value: Instruction.SubTestTitle" style="width: 60%;" placeholder="Title Instruction" />
+                        </li>
+                        <li>
+                            <label>Description<span class="mandatory">*</span></label>
+                            <div style="padding-left: 140px; padding-right: 120px;">
+                                <textarea id="DescriptionInstruction" rows="2" cols="30" name="DescriptionInstruction" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: Instruction.DescriptionInstruction"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <label>Disclaimer<span class="mandatory">*</span></label>
+                            <div style="padding-left: 140px; padding-right: 120px;">
+                                <textarea id="DisclaimerInstruction" rows="2" cols="30" name="DisclaimerInstruction" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: Instruction.DisclaimerInstruction"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--<button id="btn_save" class="k-button k-primary btn-form" data-bind="click:saveInstruction">Save</button>&nbsp;
+            <button id="btn_cancel" class="k-button btn-form k-default"  data-bind="click:cancelInstruction">Cancel</button>&nbsp;
+            <a href="#" id="PreviewBtn" class="k-button btn-form k-primary"  target="_blank" onclick="PreviewInstruction(this)">Preview</a>&nbsp;-->
+        </div>
+        <!-- Views Sample-->
+        <div>
+            <div class="box_sample_normal" id="box_sample_normal">
+                <div class="demo-section k-content">
+                    <div id="content3" class="toogle_header">
+                        <div class="addnew-sample">
+                            <button class="k-button k-primary btn-form btn_add" data-formtype="SampleNormal" data-sample="1" id="btn_addSampleForm" onclick="AddForm(this)">Add Sample <i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                        <ul id="panelbar">
+                            <li class="k-state-active sampleform-nm">Sample Form
+                                <span id="number-form-SampleNormal">1</span>
+                                <button style="float: right;" class="k-button k-primary btn-form btn_preview" id="showpreview1" onclick="ConfirmationPreview();" hidden="hidden">Preview <i class="fa fa-window-restore" aria-hidden="true"></i></button>
+                                <br />
+                                <!--<a href="#" id="ConfirmationPreviewBtn" class="k-button k-primary btn-form" target="_blank" data-bind="click: ConfirmationPreview">Preview</a>&nbsp;-->
+                                <div style="padding: 10px;">
+                                    <ul class="form-content">
+                                        <li>
+                                            <label>Title<span class="mandatory">*</span></label>
+                                            <input id="SampleNormalTitle" type="text" name="SampleNormalTitle" class="k-textbox SampleNormalTitle" style="width: 60%;" placeholder="Input Title Sample" data-bind="value: SampleNormal.SampleNormalTitle" />
+                                        </li>
+                                        <li>
+                                            <label>Introduction<span class="mandatory">*</span></label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="SampleNormalIntroduction" name="SampleNormalIntroduction" class="editor" rows="2" cols="30" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: SampleNormal.SampleNormalIntroduction"></textarea>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>Question Image</label>
+                                        </li>
+                                        <li>
+                                            <label style="margin-left: 140px; margin-right: 120px;">
+                                                <img id="mediaPic0" src="" hidden="hidden" />
+                                                <img id="mediaDisplay0" src="" class="backImage" width="100" height="100" />
+                                                <input name="media0" id="media0" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                            </label>
+                                            <input type="hidden" id="mediaId0" name="mediaId0" value="0" />
+                                            <a href="#" class="k-button" style="display: none; margin-right: 25%; float: right;" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                        </li>
+                                        <li>
+                                            <label style="padding-left: 140px; padding-right: 120px;">
+                                                <span>* Max file size 2Mb</span><br />
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>Question Text</label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="NormalQuestion" name="NormalQuestion" class="editor" rows="2" cols="30" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: SampleNormal.NormalQuestion"></textarea>
+                                            </div>
+                                            <br />
+                                            <div style="padding-left: 140px; padding-right: 120px;" class="button_answer">
+                                                <button class="k-button k-primary btn-form btn_answer" nomor="1" id="btn_answer" onclick="add_answer(this)">Add Answer</button><br />
+                                                <span>*Max. 7 Answer</span>
+                                            </div>
+                                            <div style="padding-left: 140px; padding-right: 120px;" hidden="hidden" class="button_image">
+                                                <button class="k-button k-primary btn-form btn_answer" nomor="1" id="btn_image" onclick="add_image(this)">Add Answer</button><br />
+                                                <span>*Max. 7 Answer</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <br />
+                                            <label>Answer Type</label>
+                                            <input type="text" id="typeAnswer" name="typeAnswer" data-type="combobox" data-bind="value: typeAnswer" />
+                                            <span style="padding-left: 5%;">Answer Layout</span>
+                                            <input type="text" id="typeLayout" name="typeLayout" data-type="combobox" data-bind="value: typeLayout" />
+                                        </li>
+                                        <li class="answer_list">
+                                            <div class="button_answer" id="answertext">
+                                                <div class="add_sample">
+                                                    <label>Answer 1<span class="mandatory">*</span></label>
+                                                    <div style="padding-left: 140px; padding-right: 120px;">
+                                                        <textarea id="NormalAnswerText0" class="editor" name="NormalAnswerText0" rows="2" cols="30" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: SampleNormal.NormalText[0].NormalAnswerText"></textarea>
+                                                    </div>
+                                                    <br />
+                                                    <label>Correct Answer</label>
+                                                    <input type="radio" id="NormalScoreText0" name="NormalScoreText" class="k-checkbox" data-bind="checked: SampleNormal.NormalScoreText" value="0" /><br />
+                                                </div>
+                                                <br />
+                                                <div class="add_sample">
+                                                    <label>Answer 2<span class="mandatory">*</span></label>
+                                                    <div style="padding-left: 140px; padding-right: 120px;">
+                                                        <textarea id="NormalAnswerText1" class="editor" name="NormalAnswerText1" rows="2" cols="30" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: SampleNormal.NormalText[1].NormalAnswerText"></textarea>
+                                                    </div>
+                                                    <br />
+                                                    <label>Correct Answer</label>
+                                                    <input type="radio" id="NormalScoreText1" name="NormalScoreText" class="k-checkbox" data-bind="checked: SampleNormal.NormalScoreText" value="1" /><br />
+                                                </div>
+                                                <br />
+                                                <!--<div class="add_sample">
+                                                    <label>Answer 3<span class="mandatory">*</span></label>
+                                                    <div style="padding-left:140px;padding-right:120px;">
+                                                        <textarea id="NormalAnswerText2" class="editor" name="NormalAnswerText2" rows="2" cols="30" style="height:140px;width:80%;" aria-label="editor" data-bind="value:SampleNormal.NormalText[2].NormalAnswerText"></textarea>
+                                                    </div>
+                                                    <br />
+                                                    <label>Correct Answer</label>
+                                                    <input type="radio" id="NormalScoreText2" name="NormalScoreText" class="k-checkbox" data-bind="checked:SampleNormal.NormalScoreText" value="2"/><br />
+                                                </div><br/>-->
+                                                <div id="add_sample"></div>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="button_image" hidden="hidden" id="answerimage">
+                                                <div class="add_image">
+                                                    <label>Answer 1</label><br />
+                                                    <label style="padding-left: 140px; padding-right: 120px;">
+                                                        <label>
+                                                            <img id="mediaPic1" src="" hidden="hidden" />
+                                                            <img id="mediaDisplay1" src="" class="backImage" width="100%" height="100%" />
+                                                            <input name="media1" id="media1" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                                        </label>
+                                                        <input type="hidden" id="mediaId1" name="mediaId1" value="0" />
+                                                        <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                                    </label>
+                                                    <br />
+                                                    <label style="padding-left: 140px; padding-right: 120px;">
+                                                        <span>* Max file size 2Mb</span><br />
+                                                    </label>
+                                                    <br />
+                                                    <label>Correct Answer</label>
+                                                    <input type="radio" id="NormalScoreImage0" name="NormalScoreImage" class="k-checkbox" data-bind="checked: SampleNormal.NormalScoreImage" value="0" /><br />
+                                                </div>
+                                                <br />
+                                                <div class="add_image">
+                                                    <label>Answer 2</label><br />
+                                                    <label style="padding-left: 140px; padding-right: 120px;">
+                                                        <label>
+                                                            <img id="mediaPic2" src="" hidden="hidden" />
+                                                            <img id="mediaDisplay2" src="" class="backImage" width="100%" height="100%" />
+                                                            <input name="media2" id="media2" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                                        </label>
+                                                        <input type="hidden" id="mediaId2" name="mediaId2" value="0" />
+                                                        <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                                    </label>
+                                                    <br />
+                                                    <label style="padding-left: 140px; padding-right: 120px;">
+                                                        <span>* Max file size 2Mb</span><br />
+                                                    </label>
+                                                    <br />
+                                                    <label>Correct Answer</label>
+                                                    <input type="radio" id="NormalScoreImage1" name="NormalScoreImage" class="k-checkbox" data-bind="checked: SampleNormal.NormalScoreImage" value="1" /><br />
+                                                </div>
+                                                <br />
+                                                <div id="add_image"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Explanation
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="NormalExplaination" class="editor" name="NormalExplaination" rows="2" cols="30" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: SampleNormal.NormalExplaination"></textarea>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Disclaimer
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="NormalDisclaimer" class="editor" name="NormalDisclaimer" rows="2" cols="30" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: SampleNormal.NormalDisclaimer"></textarea>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<button id="btn_save1" class="k-button k-primary btn-form" onclick="save(this)">Save</button>&nbsp;
+                <button id="btn_cancel1" class="k-button btn-form k-default" onclick="cancel(this)">Cancel</button>&nbsp;
+                <button id="btn_preview1" class="k-button btn-form k-primary" onclick="preview(this)">Preview</button>-->
+            </div>
+            <!-- page sample working memory-->
+            <div class="box_working_memory" id="box_working_memory">
+                <div class="demo-section k-content">
+                    <div id="content4" class="toogle_header">
+                        <div class="addnew-sample2">
+                            <button class="k-button k-primary btn-form btn_add" data-sample="1" data-formtype="WorkingMemory" id="btn_addWorkingForm" onclick="AddForm(this)">Add Sample <i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                        <ul id="panelbar2">
+                            <li class="k-state-active sampleform-wm">Sample Form
+                                <span id="number-form-WorkingMemory">1</span>
+                                <button style="float: right;" class="k-button k-primary btn-form btn_preview" id="showpreview1" onclick="ConfirmationPreview();" hidden="hidden">Preview <i class="fa fa-window-restore" aria-hidden="true"></i></button>
+                                <br />
+                                <div style="padding: 10px;">
+                                    <ul class="form-content">
+                                        <li>
+                                            <label>Title<span class="mandatory"> *</span></label>
+                                            <input id="WorkingMemoryTitle" type="text" name="WorkingMemoryTitle" class="k-textbox" style="width: 60%;" placeholder="Input Title Sample Working Memory" data-bind="value: WorkingMemory.WorkingMemoryTitle" /><br />
+                                            <label>
+                                                Duration per<br />
+                                                Memory<span class="mandatory"> *</span>
+                                            </label>
+                                            <input id="WorkingMemoryDuration" type="number" min="0" oninput="this.value = Math.abs(this.value)" name="WorkingMemoryDuration" class="k-textbox duration_memory" style="width: 5%;" placeholder="Ex. 5" data-bind="value: WorkingMemory.WorkingMemoryDuration" /><span> second</span>
+                                            <br />
+                                            <label style="margin-top: 20px;">
+                                                Transition<span class="mandatory"> *</span>
+                                            </label>
+                                            <input id="WorkingMemoryTransition" oninput="this.value = Math.abs(this.value)" min="0" type="number" name="WorkingMemoryTransition" class="k-textbox duration_memory" style="width: 5%;" placeholder="Ex. 5" data-bind="value: WorkingMemory.WorkingMemoryTransition" /><span> second</span>
+
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Introduction
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="IntroductionMemory" name="IntroductionMemory" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.IntroductionMemory"></textarea>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" id="WorkingMemoryPrefaceDisplay" name="WorkingMemoryPrefaceDisplay" data-bind="checked: WorkingMemory.WorkingMemoryPrefaceDisplay" onchange="DisplayPreface(this)" />
+                                                Preface
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="WorkingMemoryPreface" name="WorkingMemoryPreface" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoryPreface"></textarea>
+                                            </div>
+
+                                        </li>
+                                        <li>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <button class="k-button k-primary btn-form" id="add_working_memory" nomor="1" onclick="addWorking(this)">Add Memory</button><br />
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="memory_working_page">
+                                                <label>Memory 1</label>
+                                                <div style="padding-left: 140px; padding-right: 120px;">
+                                                    <textarea id="WorkingMemoryText0" name="WorkingMemoryText0" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[0].WorkingMemoryText"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="memory_working_page">
+                                                <label>Memory 2</label>
+                                                <div style="padding-left: 140px; padding-right: 120px;">
+                                                    <textarea id="WorkingMemoryText1" name="WorkingMemoryText1" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[1].WorkingMemoryText"></textarea>
+                                                </div>
+                                            </div>
+                                            <!--<div class="memory_working_page">
+                                                <label>Memory 3</label>
+                                                <div style="padding-left:140px;padding-right:120px;">
+                                                    <textarea id="WorkingMemoryText2" name="WorkingMemoryText2" rows="2" cols="30" class="editor" style="height:140px;width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[2].WorkingMemoryText"></textarea>
+                                                </div>
+                                            </div>-->
+                                            <div id="memory_working_page">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Question
+                                                <span class="mandatory">*</span>
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="WorkingMemoryQuestion" name="WorkingMemoryQuestion" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoryQuestion"></textarea>
+                                            </div>
+                                            <br />
+                                        </li>
+                                        <li>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <button class="k-button k-primary btn-form" id="btn_answer_Working" nomor="1" onclick="addAnswerWorking(this)">Add Answer</button><br />
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Answer Layout
+                                            </label>
+                                            <input type="text" id="WorkingMemoryLayout" name="WorkingMemoryLayout" class="WorkingMemoryLayout" style="width: 15%;" data-role="combobox" data-text-field="Value" data-value-field="Code" data-placeholder="Select Type..." data-bind="source: AnswerLayoutList, value: WorkingMemory.WorkingMemoryLayout" />
+                                        </li>
+                                        <li>
+                                            <div class="answer_working_page">
+                                                <label>Answer 1</label>
+                                                <div style="padding-left: 140px; padding-right: 120px;">
+                                                    <textarea id="WorkingMemoryAswer0" name="WorkingMemoryAswer0" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[0].WorkingMemoryAswer"></textarea>
+                                                </div>
+                                                <br />
+                                                <label>Correct Answer</label>
+                                                <input type="radio" id="WorkingMemoryScore0" name="WorkingMemoryScore" class="k-checkbox" data-bind="checked: WorkingMemory.WorkingMemoryScore" value="0" /><br />
+                                            </div>
+                                            <br />
+                                            <div class="answer_working_page">
+                                                <label>Answer 2</label>
+                                                <div style="padding-left: 140px; padding-right: 120px;">
+                                                    <textarea id="WorkingMemoryAswer1" name="WorkingMemoryAswer1" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[1].WorkingMemoryAswer"></textarea>
+                                                </div>
+                                                <br />
+                                                <label>Correct Answer</label>
+                                                <input type="radio" id="WorkingMemoryScore1" name="WorkingMemoryScore" class="k-checkbox" data-bind="checked: WorkingMemory.WorkingMemoryScore" value="1" /><br />
+                                            </div>
+                                            <br />
+                                            <!--<div class="answer_working_page">
+                                                <label>Answer 3</label>
+                                                <div style="padding-left:140px;padding-right:120px;">
+                                                  <textarea id="WorkingMemoryAswer2" name="WorkingMemoryAswer2" rows="2" cols="30" class="editor" style="height:140px;width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[2].WorkingMemoryAswer"></textarea>
+                                                </div><br />
+                                                <label>Correct Answer</label>
+                                                <input type="radio" id="WorkingMemoryScore2" name="WorkingMemoryScore" class="k-checkbox" data-bind="checked:WorkingMemory.WorkingMemoryScore" value="2"/><br />
+                                            </div></br>-->
+                                            <div id="answer_working_page">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Explanation
+                                                <span class="mandatory">*</span>
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="WorkingMemoryExplaination" name="WorkingMemoryExplaination" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoryExplaination"></textarea>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Disclaimer
+                                                <span class="mandatory">*</span>
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="WorkingMemoryDisclaimer" name="WorkingMemoryDisclaimer" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoryDisclaimer"></textarea>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <button id="btnSaveWorking" class="k-button k-primary btn-form" onclick="saveWorking(this)">Save</button>&nbsp;
+                 <button id="btnCancelWorking" class="k-button btn-form k-default" onclick="cancelWorking(this)">Cancel</button>&nbsp;
+                 <button id="btnPreviewWorking" class="k-button k-primary btn-form" onclick="previewWorking(this)">Preview</button>&nbsp;-->
+
+            </div>
+            <!-- page sample verbal memory-->
+            <div class="box_verbal_memory" id="box_verbal_memory">
+                <div class="demo-section k-content">
+                    <div id="content6" class="toogle_header">
+                        <div class="addnew-sample3">
+                            <button class="k-button k-primary btn-form btn_add" data-sample="1" data-formtype="VerbalMemory" id="btn_addVerbalForm" onclick="AddForm(this)">Add Sample <i class="fa fa-plus" aria-hidden="true"></i></button>
+                        </div>
+                        <ul id="panelbar3">
+                            <li class="k-state-active sampleform-vm">Sample Form
+                                <span id="number-form-VerbalMemory">1</span>
+                                <button style="float: right;" class="k-button k-primary btn-form btn_preview" id="showpreview1" onclick="ConfirmationPreview();" hidden="hidden">Preview <i class="fa fa-window-restore" aria-hidden="true"></i></button>
+                                <br />
+                                <div style="padding: 10px;">
+                                    <ul class="form-content">
+                                        <li>
+                                            <label>Title<span class="mandatory">*</span></label>
+                                            <input id="VerbalMemoryTitle" type="text" name="VerbalMemoryTitle" class="k-textbox" style="width: 60%;" placeholder="Input Title Verbal Memory" data-bind="value: verbalMemory.VerbalMemoryTitle" />
+                                        </li>
+                                        <li>
+                                            <label>Story<span class="mandatory">*</span></label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="VerbalMemoryStory" name="VerbalMemoryStory" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: verbalMemory.VerbalMemoryStory"></textarea>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>Story Duration<span class="mandatory">*</span></label>
+                                            <input id="StoryDuration" type="number" min="0" oninput="this.value = Math.abs(this.value)" name="StoryDuration" class="k-textbox" style="width: 5%;" placeholder="30" data-bind="value: verbalMemory.StoryDuration" />
+                                            <span>Second</span>
+                                        </li>
+                                        <li>
+                                            <label>Question<span class="mandatory">*</span></label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="VerbalMemoryQuestion" name="VerbalMemoryQuestion" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: verbalMemory.VerbalMemoryQuestion"></textarea>
+                                            </div>
+                                            <br />
+                                        </li>
+
+                                        <li>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <button class="k-button k-primary btn-form" id="btnAddVerbal" nomor="1" onclick="addAnswerVerbal(this)">Add Answer</button><br />
+
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Answer Layout
+                                                <span class="mandatory">*</span>
+                                            </label>
+                                            <input type="text" id="layoutVerbal" name="layoutVerbal" data-role="combobox" data-text-field="Value" data-value-field="Code" data-placeholder="Select Type..." data-bind="source: AnswerLayoutList, value: verbalMemory.idLayout" />
+                                        </li>
+                                        <li>
+                                            <div class="answer_verbal_page">
+                                                <label>
+                                                    Answer 1<span class="mandatory">*</span>
+                                                </label>
+                                                <div style="padding-left: 140px; padding-right: 120px;">
+                                                    <textarea id="answerVerbalMemory0" name="answerVerbalMemory0" rows="2" cols="20" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: verbalMemory.VerbalMemories[0].answerVerbalMemory"></textarea>
+                                                </div>
+                                                <br />
+                                                <label>Correct Answer</label>
+                                                <input type="radio" id="scoreVerbalMemory0" name="scoreVerbalMemory" data-bind="checked: verbalMemory.scoreVerbalMemory" value="0" /><br />
+                                            </div>
+                                            <br />
+                                            <div class="answer_verbal_page">
+                                                <label>
+                                                    Answer 2<span class="mandatory">*</span>
+                                                </label>
+                                                <div style="padding-left: 140px; padding-right: 120px;">
+                                                    <textarea id="answerVerbalMemory1" name="answerVerbalMemory1" rows="2" cols="20" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: verbalMemory.VerbalMemories[1].answerVerbalMemory"></textarea>
+                                                </div>
+                                                <br />
+                                                <label>Correct Answer</label>
+                                                <input type="radio" id="scoreVerbalMemory1" name="scoreVerbalMemory" data-bind="checked: verbalMemory.scoreVerbalMemory" value="1" /><br />
+                                            </div>
+                                            <br />
+                                            <!--<div class="answer_verbal_page">
+                                                <label>
+                                                    Answer 3<span class="mandatory">*</span>
+                                                </label>
+                                                <div style="padding-left:140px;padding-right:120px;">
+                                                  <textarea id="answerVerbalMemory2" name="answerVerbalMemory2" rows="2" cols="20" class="editor" style="height:140px;width:80%;" aria-label="editor" data-bind="value:verbalMemory.VerbalMemories[2].answerVerbalMemory"></textarea>
+                                                </div><br />
+                                                <label>Correct Answer</label>
+                                                <input type="radio" id="scoreVerbalMemory2" name="scoreVerbalMemory"  data-bind="checked:verbalMemory.scoreVerbalMemory" value="2" /><br />
+                                            </div></br>-->
+                                            <div id="answer_verbal_page">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Explanation
+                                                <span class="mandatory">*</span>
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="VerbalMemoryExplaination" name="VerbalMemoryExplaination" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: verbalMemory.VerbalMemoryExplaination"></textarea>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Disclaimer
+                                                <span class="mandatory">*</span>
+                                            </label>
+                                            <div style="padding-left: 140px; padding-right: 120px;">
+                                                <textarea id="VerbalMemoryDisclaimer" name="VerbalMemoryDisclaimer" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: verbalMemory.VerbalMemoryDisclaimer"></textarea>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<button id="btnSaveVerbal" class="k-button k-primary btn-form" data-bind="click:VerbalMemorySave">Save</button>&nbsp;
+                <button id="btnCancelVerbal" class="k-button btn-form k-default" data-bind="click:VerbalMemoryCancel">Cancel</button>&nbsp;
+                <button id="btnPreviewVerbal" class="k-button k-primary btn-form" data-bind="click:VerbalMemoryPreview">Preview</button>&nbsp;-->
+            </div>
+        </div>
+        <!-- Views Confirmation-->
+        <div>
+            <div class="demo-section k-content">
+                <div id="content5" class="toogle_header">
+                    <ul class="form-content">
+                        <li>
+                            <label>
+                                Title
+                                <span class="mandatory">*
+                                </span>
+                            </label>
+                            <input id="ConfirmationTitle" type="text" name="ConfirmationTitle" class="k-textbox" style="width: 60%;" placeholder="Title Confirmation" data-bind="value: Confirmation.ConfirmationTitle" />
+                        </li>
+                        <li>
+                            <label>
+                                Description
+                                <span class="mandatory">*
+                                </span>
+                            </label>
+                            <div style="padding-left: 140px; padding-right: 120px;">
+                                <textarea id="ConfirmationDescription" name="ConfirmationDescription" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: Confirmation.ConfirmationDescription"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <label>
+                                Disclaimer
+                                <span class="mandatory">*
+                                </span>
+                            </label>
+                            <div style="padding-left: 140px; padding-right: 120px;">
+                                <textarea id="ConfirmationDisclaimer" name="ConfirmationDisclaimer" rows="2" cols="30" class="editor" style="height: 140px; width: 80%;" aria-label="editor" data-bind="value: Confirmation.ConfirmationDisclaimer"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button id="ConfirmationSaveBtn" class="k-button k-primary btn-form" data-bind="click: ConfirmationSave">Save</button>&nbsp;
+        <button id="ConfirmationCancelBtn" class="k-button btn-form k-default" data-bind="click: ConfirmationCancel">Cancel</button>&nbsp;
+    </div>
+    
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+            
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+    
+    
+
+</body>
+</html>
+

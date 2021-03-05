@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+    <link rel="stylesheet" href="../../../Content/FontAwesome.css" />
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/common.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/sweet.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/constant.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/messageBox.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/TestTool/DetailTestTool.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/TestTool/DetailTestToolViewModel.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"></script>
+
+    <title>Edit Test Tool</title>
+    <meta charset="utf-8" />
+    <style>
+        .swal-text {
+            text-align: center !important
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Edit Test Tool</span>
+        <!--<a href="#" style="position:absolute; padding-left:80%; color:white;" data-bind="click:hideForm" class="arrow1">
+            <i class="k-icon k-i-arrow-s"></i>
+        </a>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" data-bind="click:showForm" hidden="hidden" class="arrow2">
+            <i class="k-icon k-i-arrow-n"></i>
+        </a>-->
+    </div>
+    <br />
+    <div id="popUpConfirmSave"></div>
+    <div class="demo-section k-content">
+        <div id="content" class="toogle_header">
+            <ul class="form-content">
+                <li>
+                    <label>
+                        Created By
+                        <!--<span class="mandatory">*</span>-->
+                    </label>
+                    <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width: 20%;" disabled="disabled" />
+
+                    <label style="padding-left:12%">Last Modified By</label>
+                    <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width: 20%;" disabled="disabled" />
+                </li>
+                <li>
+                    <label>
+                        Created On
+                        <!--<span class="mandatory">*</span>-->
+                    </label>
+                    <input id="createOn" name="createOn" type="text" data-bind="value:createOn" class="" style="width: 20%;" disabled="disabled" />
+
+                    <label style="padding-left:12%">Last Modified On</label>
+                    <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width: 20%;" disabled="disabled" />
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="tabstrip">
+        <ul>
+            <li class="k-state-active" id="DetailTabs">
+                Detail
+            </li>
+            <li id="InstructionTabs">
+                Instruction
+            </li>
+        </ul>
+
+        <!-- Views Detail-->
+        <div>
+            <div class="demo-section k-content">
+                <div id="content2" class="toogle_header">
+                    <ul class="form-content">
+                        <li>
+                            <label>Test Type Name<span class="mandatory">*</span></label>
+                            <input type="text" class="" id="TestTypeName" data-role="combobox" data-bind="value:TestTypeName" name="TestTypeName" style="width:20%;" />
+                            <label style="padding-left:12%">Config<span class="mandatory">*</span></label>
+                            <span> : Max Length For Raw Score</span>
+                        </li>
+                        <li>
+                            <label>Test Tool Code</label>
+                            <input type="text" class="" id="TestToolCode" data-bind="value:TestToolCode" name="TestToolCode" style="width:20%;" disabled="disabled" />
+                            <label style="padding-left:12%"></label>
+                            <input type="text" name="MaxLength" id="MaxLength" data-bind="value: MaxLength" class="k-textbox" style="width:100px;" placeholder="Input Length" />
+                        </li>
+                        <li>
+                            <label>Test Tool Name<span class="mandatory">*</span></label>
+                            <input type="text" class="k-textbox" id="TestToolName" name="TestToolName" data-bind="value:TestToolName" style="width:20%;" />
+                            <label style="padding-left:12%">Config IQ</label>
+                            <input type="checkbox" name="configIQ" class="k-checkbox" id="isconfigIQ" data-bind="checked: configIQ" data-role="boolean" checked="checked" onchange="DisplayConfig(this)" />
+                        </li>
+                        <li>
+                            <label>Description</label>
+                            <textarea id="Description" name="description" class="k-textbox" style="width:257px; height:80px" data-bind="value: description"></textarea>
+                        </li>
+                        <li>
+                            <label>Display Status</label>
+                            <input type="checkbox" name="isDisplay" id="isDisplay" value="true" class="k-checkbox isDisplay" data-role="boolean" data-bind="checked: isDisplay" onchange="Display(this)" />
+                            <span> Active</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Views Instruction-->
+        <div>
+            <div class="demo-section k-content">
+                <div id="content3" class="toogle_header">
+                    <ul class="form-content">
+                        <li>
+                            <label>Title<span class="mandatory">*</span></label>
+                            <input id="InstructionTitle" type="text" name="InstructionTitle" class="k-textbox InstructionTitle" style="width: 60%;" placeholder="Title Instruction" data-bind="value: Instruction.InstructionTitle" />
+                        </li>
+                        <li>
+                            <label>Description<span class="mandatory">*</span></label>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <textarea id="InstructionDesc" name="InstructionDesc" rows="2" cols="30" class="editor" style="height:140px;width:80%;" aria-label="editor" data-bind="value: Instruction.InstructionDesc"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <label>Disclaimer<span class="mandatory">*</span></label>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <textarea id="InstructionDisclaimer" name="InstructionDisclaimer" rows="2" cols="30" class="editor" style="height:140px;width:80%;" aria-label="editor" data-bind="value:Instruction.InstructionDisclaimer"></textarea>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br />
+        <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:edit">Save</button>
+        <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+    </div>
+</body>
+</html>

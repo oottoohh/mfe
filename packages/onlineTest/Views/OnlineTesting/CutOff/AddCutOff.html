@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+        var __CACHE_BUSTED_STYLES = [
+            "../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css"
+        ];
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/messageBox.js",
+            "../../../Scripts/Common/localStore.js",
+            "../../../Scripts/Common/js.cookie.js",
+            "../../../Scripts/Views/OnlineTesting/CutOff/AddCutOff.js",
+            "../../../Scripts/Views/OnlineTesting/CutOff/AddCutOffViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"
+        ]
+    </script>
+    
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+
+    <title>Add Maintain Cut Off</title>
+    <style>
+        .swal-overlay {
+            z-index: 10000000;
+        }
+
+        .swal-text {
+            text-align: center !important
+        }
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 80%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+
+        .collapsible:after {
+            content: '\002B';
+            color: white;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .k-danger {
+            background-color: #f64141;
+            color: #fff;
+            border-color: #f64141;
+        }
+
+        .content {
+            padding: 0 18px 0 10px;
+            max-height: 0;
+            width: 80%;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+        }
+    </style>
+    <style type="text/css">
+        .k-window {
+            top: 25% !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Add Maintain Cut Off</span>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" data-bind="click:hideForm" class="arrow1">
+            <i class="k-icon k-i-arrow-s"></i>
+        </a>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" data-bind="click:showForm" hidden="hidden" class="arrow2">
+            <i class="k-icon k-i-arrow-n"></i>
+        </a>
+    </div>
+
+    <div id="dialog">
+        <div class="list-data" hidden="hidden">
+            <ul class="form-content">
+                <li>
+                    <label>Test Type<span class="mandatory">*</span></label>
+                    <input data-role="combobox" id="TestTypeName" name="TestTypeName" data-bind="value:TestTypeName" />
+                    <label style="padding-left:10%;">Test Tool<span class="mandatory">*</span></label>
+                    <input data-role="combobox" id="TestToolName" name="TestToolName" data-bind="value:TestToolName" placeholder="Select Type.." />
+                    <label style="padding-left:10%;"><button id="searchButtonSubTest" class="k-button k-primary btn-form" onclick="Search()">Search</button></label>
+                </li>
+            </ul>
+            <div id="gridTable"></div>
+            <ul class="form-content" id="cutOffIQField" style="padding-top:2%; padding-bottom:2%">
+                <li>
+                    <label>Cut Off IQ</label>
+                    <input style="padding-left:5%;" type="checkbox" name="cutOffIQCheckBox" id="cutOffIQCheckBox" data-role="boolean" onchange="CutOffIQCheckBoxChecked(this)" />
+                    <input type="number" id="CutOffIQ" data-role='numerictextbox' class="k-numerictextbox" value="" onchange="changeCutOffIQ(this)" name="CutOffIQ" style="width:10%;" disabled="disabled" />
+                </li>
+                <li>
+                    <!--style="padding-left:14%; width:9%;"-->
+                    <label id="NormScoreIQField" name="NormScoreIQField">Norm IQ Name</label>
+                    <label id="NormScoreIQName" name="NormScoreIQName" style="width:70%;" data-bind="value:NormScoreIQName"></label>
+                </li>
+            </ul>
+            <ul class="form-content">
+                <li>
+                    <button class="k-button k-primary btn-form" onclick="checkConfigScoreSubTest()">Ok</button> &nbsp;&nbsp;
+                    <button class="k-button k-default btn-form" onclick="CancelbySub()">Cancel</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="dialogByTest">
+        <div class="list-dataByTest" hidden="hidden">
+            <ul class="form-content">
+                <li>
+                    <label>Test Type<span class="mandatory">*</span></label>
+                    <input data-role="combobox" id="TestTypes" name="TestTypes" class="TestTypeName" data-bind="value:TestTypeName" />
+                    <label style="padding-left:10%;">Test Tool<span class="mandatory">*</span></label>
+                    <input data-role="combobox" id="TestTools" class="TestToolName" name="TestTools" data-bind="value:TestToolName" placeholder="Select Type.." />
+                    <label style="padding-left:10%;"><button id="searchButtonTest" class="k-button k-primary btn-form" onclick="SearchTest()">Search</button></label>
+                </li>
+            </ul>
+            <div id="gridByTest"></div>
+            <br />
+            <div id="gridCutOffValidityScale"></div>
+            <br />
+            <button class="k-button k-primary btn-form" onclick="checkConfigScoreTest()">Ok</button> &nbsp;&nbsp;
+            <button class="k-button k-default btn-form" onclick="CancelbyTest()">Cancel</button>
+        </div>
+    </div>
+
+    <div id="dialogCheckCompetency">
+        <div class="list-dataCompetency" hidden="hidden">
+            <div id="isiCompetency">
+                <input id="isCheckCompetency0" class='checkone' type="radio" name="checkCompetency" competencyMatrix="0" onchange="selectedCheckCompetency(this)" />
+
+                <button class="collapsible" id="competencyMatrixName0" competencyMatrix="0">Competency Matrix A</button>
+                <div class="content" id="content0">
+                    <ul class="form-content">
+                        <li>
+                            <label id="childCompetencyName00" competency="0">Competency 1</label>
+                        </li>
+                    </ul>
+                </div>
+                <br />
+                <br />
+            </div>
+            <button class="k-button k-primary btn-form" onclick="TempCheckCompetency()">Ok</button> &nbsp;&nbsp;
+            <button class="k-button k-default btn-form" onclick="CancelCheckCompetency()">Cancel</button>
+        </div>
+    </div>
+
+    <div id="example">
+        <div class="demo-section k-content">
+            <div id="content" class="toogle_header">
+                <div class="box1" id="boox">
+                    <ul class="form-content">
+                        <li>
+                            <label>Created By</label>
+                            <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width:20%;" disabled="disabled" />
+                            <label style="padding-left:12%">Last Modified By</label>
+                            <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width:20%;" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>Created On</label>
+                            <input id="createOn" name="createOn" type="text" data-bind="value:createOn" class="" style="width:20%;" disabled="disabled" />
+                            <label style="padding-left:12%">Last Modified On</label>
+                            <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width:20%;" disabled="disabled" />
+                        </li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="column-new-tab-question"></div>
+                <div class="column-new-tab-question-x">
+                    <ul class="form-content">
+                        <li>
+                            <label>Cut Off Code<span class="mandatory">*</span></label>
+                            <input type="text" id="CutOffCode" data-role="text" data-bind="value:CutOffCode" name="CutOffCode" style="width:20%;" disabled="disabled" />
+                            <label style="padding-left:12%">Cut Off Name<span class="mandatory">*</span></label>
+                            <input type="text" id="NameOnly" data-role="text" data-bind="value:NameOnly" name="NameOnly" style="width:20%;" />
+                            <input type="text" id="NameNumbering" data-role="text" data-bind="value:NameNumbering" name="NameNumbering" style="width:10%;" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>Company<span class="mandatory">*</span></label>
+                            <input data-role="combobox" id="CompanyID" name="CompanyID" data-bind="value:CompanyName" style="width:20.7%;" />
+                            <label style="padding-left:12%">General</label>
+                            <input type="checkbox" name="generalStatus" id="generalStatus" value="true" data-role="boolean" data-bind="checked: GeneralStatus" onchange="General(this)" />
+                            <span> Yes</span>
+                        </li>
+                        <li>
+                            <label>Grade<span class="mandatory">*</span></label>
+                            <input data-role="combobox" id="GradeID" name="GradeID" data-bind="value:GradeName" style="width:20.7%;" />
+                            <label style="padding-left:12%">Display Status</label>
+                            <input type="checkbox" name="displayStatus" id="displayStatus" value="true" data-role="boolean" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                            <span> Active</span>
+                        </li>
+                        <li>
+                            <label style="padding-top:20px;">
+                                <span id="checkBtnSub">
+                                    <button class="k-button k-primary btn-form" id="btnSubTest" edit="false" onclick="addSubTest(this)">Add By Sub Test</button>&nbsp;
+                                </span>
+                            </label>
+                            <span id="checkBtnTest">
+                                <button class="k-button k-primary btn-form" id="btnTest" edit="false" onclick="addTest(this)">Add By Test</button>
+                            </span>
+                        </li>
+                        <br />
+                        <li>
+                            <div>
+                                <span>List By Sub Test</span>
+                                <div id="gridLocal"></div>
+                            </div>
+                            <br />
+                            <div>
+                                <span>List By Test</span>
+                                <div id="gridLocals"></div>
+                            </div>
+                            <br />
+                            <div>
+                                <button class="k-button k-primary btn-form-x" id="btnCheckCompetency" data-bind="click: CheckCompetency">Check Competency</button>
+                                <button class="k-button k-danger btn-form-x" id="btnDeleteCompetency" data-bind="click: DeleteCompetency">Delete Competency</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="gridCompetency"></div>
+                        </li>
+                    </ul>
+                </div>
+                <br />
+                <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+                <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+
+    
+
+    <script>
+        $('.k-numerictextbox').kendoNumericTextBox({
+            format: "#.#",
+            decimals: 0
+        });
+        $('#CutOffName').keypress(function (e) {
+            if (e.which == 35) {
+                return false;
+            }
+        });
+        var coll = document.getElementsByClassName("collapsible");
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

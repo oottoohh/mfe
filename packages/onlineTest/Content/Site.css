@@ -1,0 +1,206 @@
+﻿html {
+    font-family: 'Lucida Sans Unicode','Lucida Grande',arial,helvetica,sans-serif;
+    font-size: 75%;
+}
+
+/*------------------------ common page -----------------------*/
+#header {
+    padding: 5px 0 5px 0;
+}
+
+#content {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 100%;
+}
+
+#footer {
+    padding: 5px 0 5px 0;
+}
+
+.column-left, .column-right {
+    display: inline-block;
+    min-width: 380px;
+    width: 49%;
+}
+
+.column-left-detail {
+    display: inline-block;
+    min-width: 200px;
+    width: 20%;
+}
+
+.column-right-detail {
+    display: inline-block;
+    min-width: 600px;
+    width: 79%;
+}
+
+.form-content {
+    list-style-type: none;
+}
+
+    .form-content li {
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+
+        .form-content li label {
+            display: inline-block;
+            width: 135px;
+        }
+
+.form-filter-detail ul {
+    list-style-type: none;
+    margin-left: 25px;
+    padding: 0;
+}
+
+    .form-filter-detail ul li {
+        padding: 3px;
+    }
+
+        .form-filter-detail ul li label {
+            display: inline-block;
+            width: 135px;
+        }
+
+/*------------------------ common component -----------------------*/
+a {
+    text-decoration: none;
+}
+
+.mandatory {
+    color: red;
+}
+
+.loading {
+    width: 48px;
+    height: 48px;
+    background-image: url(../Content/kendo/2014.1.423/BlueOpal/loading-image.gif);
+    background-repeat: no-repeat;
+}
+
+#messageBox {
+    text-align: center;
+}
+
+.message-text, .message-button {
+    display: block;
+    padding: 10px 0px 10px 0px;
+}
+
+/*syle new*/
+.column-new-tab-question {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #007DEA;
+    color: white;
+    font-size: 16px;
+}
+
+.column-new-tab-question-x {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*overflow-y: scroll;
+    -webkit-overflow-scrolling: scroll;*/
+    border: 1px solid #007DEA;
+}
+
+.btn-form {
+    /*width: 125px;*/
+    height: 30px;
+}
+
+.k-form-new {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.btn-form-x {
+    /*width: 125px;*/
+    height: 40px;
+}
+
+.btn-popup-page {
+    padding-left: 70px;
+    position: relative;
+    text-align: center;
+    background-color: lavender;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.btn-page-back {
+    padding-left: 70px;
+    position: relative;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.btn-popup {
+    width: 325px;
+    height: 30px;
+}
+
+.listSpan {
+    width: 150px;
+}
+
+.colomup {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #007DEA;
+}
+
+.headup {
+    color: white;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.fieldlist {
+    margin: 0 0 -2em;
+    padding: 0;
+}
+
+    .fieldlist li {
+        list-style: none;
+        padding-bottom: 2em;
+    }
+
+    .fieldlist label {
+        display: block;
+        padding-bottom: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: #444;
+    }
+
+#example {
+    min-height: 370px;
+}
+
+    #example .box {
+        margin: 0;
+    }
+
+#show {
+    text-align: center;
+    position: absolute;
+    white-space: nowrap;
+    padding: 1em;
+    cursor: pointer;
+    margin-top: 30px;
+}

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/MessageBox.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/sweet.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/common.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/constant.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/MappingReportType/MappingReportType.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/MappingReportType/MappingReportTypeViewModel.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/GetReport/GetReport.js"></script>
+    <title>Mapping Report Type</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+   
+</head>
+<body>
+    <div class="column-new-tab-question-x" >
+        <img src="../../../Images/AIStandard-Logo.gif"/><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Mapping Report Type</span>
+    </div>
+    <br />
+    <div id="example">        
+        <div class="demo-section k-content">
+            <ul class="form-content">
+                <li>
+                    <label>Mapping Report </label>
+                       <input id="MappingReportList" name="MappingReportList"  data-role="combobox" style="width:25%" data-bind="value: MappingReportList" />
+                    <label style="padding-left:15px;"> Display Status</label>
+                    <input id="DisplayStatsList" name="DisplayStatsList" data-role="combobox" style="width:15%" data-bind="value: getStatusDisplay" />
+                    <br />
+                    <br />
+                </li>
+                <li>
+                    <button id="btn_seacrh" class="k-button k-primary btn-form" data-bind="click: search">Search</button>&nbsp;
+                    <button id="btn_clear" class="k-button btn-form" data-bind="click: clear">Clear</button><br /><br />
+                </li>
+                <li>
+                    <a href="#" id="addMapping" class="k-button k-primary btn-form" data-bind="click: addCompetency">Add Mapping Report Type</a>
+                </li>
+            </ul>
+        </div>
+        <br />
+        <table id="grid">
+            
+        </table>
+
+    </div>
+</body>
+</html>

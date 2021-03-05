@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+        var __CACHE_BUSTED_STYLES = [
+            "../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+        ];
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/localStore.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Views/OnlineTesting/GroupByTest/PreviewGroupByTest.js",
+            "../../../Scripts/Views/OnlineTesting/GroupByTest/PreviewGroupByTestViewModel.js"
+        ]
+    </script>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+
+    <title>Question-Preview</title>
+    <style>
+        .prev-heder {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: lightgray;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .HeadWorking {
+            text-align: center;
+            font-size: 26px;
+            position: absolute;
+            right: 10%;
+            left: 10%;
+        }
+
+        .prev-footer {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: lightgray;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .prev-box {
+            position: relative;
+            border: 1px solid royalblue;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .prev-colom {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-color: white;
+            text-align: justify;
+            font-size: 14px;
+        }
+
+        .topright {
+            padding-top: 20px;
+            position: absolute;
+            right: 16px;
+            font-size: 14px;
+        }
+
+        .topleft {
+            padding-top: 20px;
+            position: absolute;
+            left: 16px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="prev-box" id="PreviewInstruction">
+        <div class="colomup">
+            <span class="headup">Question and Answer</span>
+        </div>
+        <br />
+        <div class="prev-heder"><span data-bind="html:Question.SubTestName" class=""></span></div>
+        <div class="prev-colom">
+            <p data-bind="html:Question.QuestionText" class=""></p>
+            <p>
+                <img id="QuestionImage" src="" style="background: no-repeat url(../../../Images/add-picture.jpg) center; border: thin" width="220" height="145" />
+            </p>
+            <div id="ListQuestion" class="ListQuestion">
+                <div id="Img3"> </div>
+                <div id="Img2"> </div>
+            </div>
+        </div>
+        <div class="topright"></div>
+        <div class="colomup">
+            <span class="headup"></span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+
+    
+</body>
+</html>

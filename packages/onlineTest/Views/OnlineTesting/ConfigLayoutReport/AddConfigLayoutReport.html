@@ -1,0 +1,597 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+        var __CACHE_BUSTED_STYLES = [
+            "../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css",
+        ];
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Content/JQuery/JQuery/JQuery.min.js",
+            "../../../Content/jquery-ui/jquery-ui-1.12.1.custom/jquery-ui.min.js",
+            "https://code.jquery.com/jquery-migrate-3.0.0.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Views/OnlineTesting/ConfigLayoutReport/AddConfigLayoutReport.js",
+            "../../../Scripts/Views/OnlineTesting/ConfigLayoutReport/AddConfigLayoutReportViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"
+        ]
+    </script>
+   
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+
+    
+    <!--<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>-->
+    <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>-->
+    <!--<script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>-->
+
+    <title>Config Layout</title>
+    <style>
+        .swal-text {
+            text-align: center !important
+        }
+
+        #panelbarCandidateInformation {
+            width: 96.5%;
+        }
+
+        #panelbarPsychogram {
+            width: 96.5%;
+        }
+
+        #panelbarPsychogramAbility {
+            width: 96.5%;
+        }
+
+        #panelbarPsychogramPersonality {
+            width: 96.5%;
+        }
+
+        #panelbarNarrativesGroupNarratives {
+            width: 96.5%;
+        }
+
+        #panelbarStrengthArea {
+            width: 96.5%;
+        }
+
+        #panelbarDevelopmentArea {
+            width: 96.5%;
+        }
+
+        .draggable {
+            /*position: relative;*/
+            /*float: left;*/
+            /*width: 170px;*/
+            border: 1px solid white;
+            margin-right: 5px;
+            min-height: 40px;
+        }
+
+        li {
+            list-style-type: none
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" />
+        <span style="padding-left:21%; font-size:20px;">
+            <b>Online Test System - Admin Site</b>
+        </span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Config Layout</span>
+    </div>
+    <br />
+    <div id="example" class="bodies">
+        <div class="demo-section k-content">
+            <div id="content" class="toogle_header">
+                <div class="box" id="headerBox">
+                    <ul class="form-content">
+                        <li>
+                            <label>Config Layout Code<span class="mandatory">*</span></label>
+                            <input id="ConfigLayoutCode" name="ConfigLayoutCode" style="width:25%" data-bind="value: ConfigLayoutCode" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>Company<span class="mandatory">*</span></label>
+                            <input id="CompanyId" name="CompanyId" data-role="combobox" style="width:25%" data-bind="value: CompanyName" />
+                        </li>
+                        <li>
+                            <label>Mapping Report<span class="mandatory">*</span></label>
+                            <input id="MappingReportTypeCode" name="MappingReportTypeCode" data-role="combobox" style="width:25%" data-bind="value: MappingReportTypeName" placeholder="Select Type.." />
+                        </li>
+                        <li>
+                            <label>Display Status</label>
+                            <input type="checkbox" id="display_status" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatus" onchange="Display(this)" />Active
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="column-new-tab-question" id="headerCoverBox">
+                    Cover
+                    <a style="position:absolute; padding-left:90%; color:white;" data-bind="click:hideTabCover" class="arrowCover1">
+                        <i class="k-icon k-i-arrow-s"></i>
+                    </a>
+                    <a style="position:absolute; padding-left:90%; color:white;" data-bind="click:showTabCover" hidden="hidden" class="arrowCover2">
+                        <i class="k-icon k-i-arrow-n"></i>
+                    </a>
+                </div>
+                <div class="column-new-tab-question-x">
+                    <div class="box1" id="coverBox">
+                        <ul class="form-content" id="Cover">
+                            <li>
+                                <label>Title<span class="mandatory">*</span></label>
+                                <input id="TitleCover" name="TitleCover" style="width:50%" data-bind="value: TitleCover" />
+                            </li>
+                            <li id="CoverValue">
+                                <label>Value<span class="mandatory">*</span></label>
+                                <input id="ConfigLayoutCoverValueCode0" name="ConfigLayoutCoverValueCode0" data-role="combobox" style="width:25%" data-bind="value: ConfigLayoutCoverValueName" placeholder="Select Type.." />
+                                <a id="addCoverValue" class="k-button k-primary btn-form" no="0" onclick="addCoverValue(this)">Add</a>
+                            </li>
+                            <li>
+                                <label>Disclaimer<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="DisclaimerText" name="DisclaimerText" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value:DisclaimerText"></textarea>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="column-new-tab-question" id="headerContentBox">
+                    Content
+                    <a style="position:absolute; padding-left:90%; color:white;" data-bind="click:hideTabContent" class="arrowContent1">
+                        <i class="k-icon k-i-arrow-s"></i>
+                    </a>
+                    <a style="position:absolute; padding-left:90%; color:white;" data-bind="click:showTabContent" hidden="hidden" class="arrowContent2">
+                        <i class="k-icon k-i-arrow-n"></i>
+                    </a>
+                </div>
+                <div class="column-new-tab-question-x">
+                    <div class="box1" id="contentBox">
+                        <ul class="form-content">
+                            <li style="padding-bottom:2%">
+                                <label>Title<span class="mandatory">*</span></label>
+                                <input id="TitleContent" name="TitleContent" style="width:50%" data-bind="value: TitleContent" />
+                            </li>
+                            <li id="contentLayout">
+                                <div id="panelbarCandidateInformation">
+                                    <div id="CandidateInformation">
+                                        Candidate Information
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitleCandidateInformation" name="TitleCandidateInformation" style="width:50%" data-bind="value: TitleCandidateInformation" />
+                                            </li>
+                                            <li>
+                                                <a id="addFieldCandidateInformation" class="k-button k-primary btn-form" noField="0" onclick="addFieldCandidateInformation(this)" style="width:10%;">Add Field</a>
+                                            </li>
+                                            <li>
+                                                <label style="padding-left:10%;">Field Name<span class="mandatory">*</span></label>
+                                                <label style="padding-left: 13%;">Value<span class="mandatory">*</span></label>
+                                            </li>
+                                            <li style="padding-bottom:2%" id="FieldValue">
+                                                <input id="CandidateInformationFieldName0" name="CandidateInformationFieldName0" noField="0" style="width:25%" data-bind="value: Fields[0].FieldName" />
+                                                <input id="CandidateInformationValue0" name="CandidateInformationValue0" noValue="0" data-role="combobox" style="width:25%;" data-bind="value: Fields[0].ValueCode" placeholder="Select Type.." />
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusCandidateInformation" class="k-checkbox" checked" data-bind="checked:DisplayStatusCandidateInformation" onchange="DisplayStatusCandidateInformation(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="panelbarPsychogram">
+                                    <div id="Psychogram">
+                                        Psychogram
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%; padding-bottom:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitlePsychogram" name="TitlePsychogram" style="width:50%" data-bind="value: TitlePsychogram" />
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusPsychogram" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusPsychogram" onchange="DisplayStatusPsychogram(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="panelbarPsychogramAbility">
+                                    <div id="PsychogramAbility">
+                                        Psychogram Ability
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%; padding-bottom:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitlePsychogramAbility" name="TitlePsychogramAbility" style="width:50%" data-bind="value: TitlePsychogramAbility" />
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusPsychogramAbility" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusPsychogramAbility" onchange="DisplayStatusPsychogramAbility(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="panelbarPsychogramPersonality">
+                                    <div id="PsychogramPersonality">
+                                        Psychogram Personality
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%; padding-bottom:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitlePsychogramPersonality" name="TitlePsychogramPersonality" style="width:50%" data-bind="value: TitlePsychogramPersonality" />
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusPsychogramPersonality" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusPsychogramPersonality" onchange="DisplayStatusPsychogramPersonality(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="panelbarNarrativesGroupNarratives">
+                                    <div id="NarrativesGroupNarratives">
+                                        Narratives & Group Narratives
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%;padding-bottom:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitleNarrativesGroupNarratives" name="TitleNarrativesGroupNarratives" style="width:50%" data-bind="value: TitleNarrativesGroupNarratives" />
+                                            </li>
+                                            <li id="listNarratives" style="padding-top:2%;padding-bottom:2%">
+                                                <ul class="draggable">
+                                                    <!-- SUBTEST NARRATIVE -->
+                                                    <li id="HasSubTestNarrative" style="border: outset; width:50%; display:block" data-type="subtest">
+                                                        [[Displayed Sub Test Narratives]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusSubTestNarrative" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusSubTestNarrative" onchange="Display(this)" />Display
+                                                        </span>
+                                                        <div id="AllNarrativesSubTestNarrative">
+                                                            All Narratives
+                                                            <input type="radio" name="IsAllNarrativeSubTestNarrative" id="IsAllNarrativeSubTestNarrative" checked="checked" data-bind="checked: IsAllNarrativeSubTestNarrative" onclick="AllNarrativeSubTestNarrative(this)" />
+                                                            <span> Yes</span>
+                                                            <input type="radio" name="IsAllNarrativeSubTestNarrative" id="IsNotAllNarrativeSubTestNarrative" data-bind="checked: IsNotAllNarrativeSubTestNarrative" onclick="NotAllNarrativeSubTestNarrative(this)" />
+                                                            <span> No</span>
+                                                        </div>
+                                                        <div id="HighestScoreSubTestNarrative" hidden="hidden">
+                                                            Highest Score
+                                                            <input type="checkbox" id="IsHighestScoreSubTestNarrative" class="k-checkbox" checked="checked" data-bind="checked:IsHighestScoreSubTestNarrative" onchange="DisplayHighestScoreSubTestNarrative(this)" />
+                                                            <input id="HighestScoreTotalDisplaySubTestNarrative" name="HighestScoreTotalDisplaySubTestNarrative" type="number" style="width:10%" data-bind="value: HighestScoreTotalDisplaySubTestNarrative" />
+                                                            Sub Test
+                                                        </div>
+                                                        <div id="LowestScoreSubTestNarrative" hidden="hidden">
+                                                            Lowest Score
+                                                            <input type="checkbox" id="IsLowestScoreSubTestNarrative" class="k-checkbox" checked="checked" data-bind="checked:IsLowestScoreSubTestNarrative" onchange="DisplayLowestScoreSubTestNarrative(this)" />
+                                                            <input id="LowestScoreTotalDisplaySubTestNarrative" name="LowestScoreTotalDisplaySubTestNarrative" type="number" style="width:10%" data-bind="value: LowestScoreTotalDisplaySubTestNarrative" />
+                                                            Sub Test
+                                                        </div>
+                                                    </li>
+
+                                                    <!-- SUBTEST NARRATIVE SHORT -->
+                                                    <li id="IsSubTestNarrativeShort" style="border: outset; width:50%; display:block" data-type="subtest">
+                                                        [[Displayed Sub Test Narratives - Short]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusSubTestNarrativeShort" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusSubTestNarrativeShort" onchange="DisplayStatusSubTestNarrativeShort(this)" />Display
+                                                        </span>
+                                                        <div id="AllNarrativesSubTestNarrativeShort">
+                                                            All Narratives
+                                                            <input type="radio" name="IsAllNarrativeSubTestNarrativeShort" id="IsAllNarrativeSubTestNarrativeShort" checked="checked" data-bind="checked: IsAllNarrativeSubTestNarrativeShort" onclick="AllNarrativeSubTestNarrativeShort(this)" />
+                                                            <span> Yes</span>
+                                                            <input type="radio" name="IsAllNarrativeSubTestNarrativeShort" id="IsNotAllNarrativeSubTestNarrativeShort" data-bind="checked: IsNotAllNarrativeSubTestNarrativeShort" onclick="NotAllNarrativeSubTestNarrativeShort(this)" />
+                                                            <span> No</span>
+                                                        </div>
+                                                        <div id="HighestScoreSubTestNarrativeShort" hidden="hidden">
+                                                            Highest Score
+                                                            <input type="checkbox" id="IsHighestScoreSubTestNarrativeShort" class="k-checkbox" checked="checked" data-bind="checked:IsHighestScoreSubTestNarrativeShort" onchange="DisplayHighestScoreSubTestNarrativeShort(this)" />
+                                                            <input id="HighestScoreTotalDisplaySubTestNarrativeShort" name="HighestScoreTotalDisplaySubTestNarrativeShort" type="number" style="width:10%" data-bind="value: HighestScoreTotalDisplaySubTestNarrativeShort" />
+                                                            Sub Test
+                                                        </div>
+                                                        <div id="LowestScoreSubTestNarrativeShort" hidden="hidden">
+                                                            Lowest Score
+                                                            <input type="checkbox" id="IsLowestScoreSubTestNarrativeShort" class="k-checkbox" checked="checked" data-bind="checked:IsLowestScoreSubTestNarrativeShort" onchange="DisplayLowestScoreSubTestNarrativeShort(this)" />
+                                                            <input id="LowestScoreTotalDisplaySubTestNarrativeShort" name="LowestScoreTotalDisplaySubTestNarrativeShort" type="number" style="width:10%" data-bind="value: LowestScoreTotalDisplaySubTestNarrativeShort" />
+                                                            Sub Test
+                                                        </div>
+                                                    </li>
+
+                                                    <!-- SUBTEST NARRATIVE LONG -->
+                                                    <li id="IsSubTestNarrativeLong" style="border: outset; width:50%; display:block" data-type="subtest">
+                                                        [[Displayed Sub Test Narratives - Long]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusSubTestNarrativeLong" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusSubTestNarrativeLong" onchange="DisplayStatusSubTestNarrativeLong(this)" />Display
+                                                        </span>
+                                                        <div id="AllNarrativesSubTestNarrativeLong">
+                                                            All Narratives
+                                                            <input type="radio" name="IsAllNarrativeSubTestNarrativeLong" id="IsAllNarrativeSubTestNarrativeLong" checked="checked" data-bind="checked: IsAllNarrativeSubTestNarrativeLong" onclick="AllNarrativeSubTestNarrativeLong(this)" />
+                                                            <span> Yes</span>
+                                                            <input type="radio" name="IsAllNarrativeSubTestNarrativeLong" id="IsNotAllNarrativeSubTestNarrativeLong" data-bind="checked: IsNotAllNarrativeSubTestNarrativeLong" onclick="NotAllNarrativeSubTestNarrativeLong(this)" />
+                                                            <span> No</span>
+                                                        </div>
+                                                        <div id="HighestScoreSubTestNarrativeLong" hidden="hidden">
+                                                            Highest Score
+                                                            <input type="checkbox" id="IsHighestScoreSubTestNarrativeLong" class="k-checkbox" checked="checked" data-bind="checked:IsHighestScoreSubTestNarrativeLong" onchange="DisplayHighestScoreSubTestNarrativeLong(this)" />
+                                                            <input id="HighestScoreTotalDisplaySubTestNarrativeLong" name="HighestScoreTotalDisplaySubTestNarrativeLong" type="number" style="width:10%" data-bind="value: HighestScoreTotalDisplaySubTestNarrativeLong" />
+                                                            Sub Test
+                                                        </div>
+                                                        <div id="LowestScoreSubTestNarrativeLong" hidden="hidden">
+                                                            Lowest Score
+                                                            <input type="checkbox" id="IsLowestScoreSubTestNarrativeLong" class="k-checkbox" checked="checked" data-bind="checked:IsLowestScoreSubTestNarrativeLong" onchange="DisplayLowestScoreSubTestNarrativeLong(this)" />
+                                                            <input id="LowestScoreTotalDisplaySubTestNarrativeLong" name="LowestScoreTotalDisplaySubTestNarrativeLong" type="number" style="width:10%" data-bind="value: LowestScoreTotalDisplaySubTestNarrativeLong" />
+                                                            Sub Test
+                                                        </div>
+                                                    </li>
+
+                                                    <!-- SUBTEST CUTTING NARRATIVE -->
+                                                    <li id="HasSubTestCuttingNarrative" style="border: outset; width:50%; display:block" data-type="subtest">
+                                                        [[Sub Test Cutting Narratives]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusSubTestCuttingNarrative" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusSubTestCuttingNarrative" onchange="DisplayStatusSubTestCuttingNarrative(this)" />Display
+                                                        </span>
+                                                        <div id="AllNarrativesSubTestCuttingNarrative">
+                                                            All Narratives
+                                                            <input type="radio" name="IsAllNarrativeSubTestCuttingNarrative" id="IsAllNarrativeSubTestCuttingNarrative" checked="checked" data-bind="checked: IsAllNarrativeSubTestCuttingNarrative" onclick="AllNarrativeSubTestCuttingNarrative(this)" />
+                                                            <span> Yes</span>
+                                                            <input type="radio" name="IsAllNarrativeSubTestCuttingNarrative" id="IsNotAllNarrativeSubTestCuttingNarrative" data-bind="checked: IsNotAllNarrativeSubTestCuttingNarrative" onclick="NotAllNarrativeSubTestCuttingNarrative(this)" />
+                                                            <span> No</span>
+                                                        </div>
+                                                        <div id="HighestScoreSubTestCuttingNarrative" hidden="hidden">
+                                                            Highest Score
+                                                            <input type="checkbox" id="IsHighestScoreSubTestCuttingNarrative" class="k-checkbox" checked="checked" data-bind="checked:IsHighestScoreSubTestCuttingNarrative" onchange="DisplayHighestScoreSubTestCuttingNarrative(this)" />
+                                                            <input id="HighestScoreTotalDisplaySubTestCuttingNarrative" name="HighestScoreTotalDisplaySubTestCuttingNarrative" type="number" style="width:10%" data-bind="value: HighestScoreTotalDisplaySubTestCuttingNarrative" />
+                                                            Sub Test
+                                                        </div>
+                                                        <div id="LowestScoreSubTestCuttingNarrative" hidden="hidden">
+                                                            Lowest Score
+                                                            <input type="checkbox" id="IsLowestScoreSubTestCuttingNarrative" class="k-checkbox" checked="checked" data-bind="checked:IsLowestScoreSubTestCuttingNarrative" onchange="DisplayLowestScoreSubTestCuttingNarrative(this)" />
+                                                            <input id="LowestScoreTotalDisplaySubTestCuttingNarrative" name="LowestScoreTotalDisplaySubTestCuttingNarrative" type="number" style="width:10%" data-bind="value: LowestScoreTotalDisplaySubTestCuttingNarrative" />
+                                                            Sub Test
+                                                        </div>
+                                                    </li>
+
+                                                    <!-- SUBTEST CUTTING NARRATIVE SHORT -->
+                                                    <li id="IsSubTestCuttingNarrativeShort" style="border: outset; width:50%; display:block" data-type="subtest">
+                                                        [[Sub Test Cutting Narratives - Short]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusSubTestCuttingNarrativeShort" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusSubTestCuttingNarrativeShort" onchange="DisplayStatusSubTestCuttingNarrativeShort(this)" />Display
+                                                        </span>
+                                                        <div id="AllNarrativesSubTestCuttingNarrativeShort">
+                                                            All Narratives
+                                                            <input type="radio" name="IsAllNarrativeSubTestCuttingNarrativeShort" id="IsAllNarrativeSubTestCuttingNarrativeShort" checked="checked" data-bind="checked: IsAllNarrativeSubTestCuttingNarrativeShort" onclick="AllNarrativeSubTestCuttingNarrativeShort(this)" />
+                                                            <span> Yes</span>
+                                                            <input type="radio" name="IsAllNarrativeSubTestCuttingNarrativeShort" id="IsNotAllNarrativeSubTestCuttingNarrativeShort" data-bind="checked: IsNotAllNarrativeSubTestCuttingNarrativeShort" onclick="NotAllNarrativeSubTestCuttingNarrativeShort(this)" />
+                                                            <span> No</span>
+                                                        </div>
+                                                        <div id="HighestScoreSubTestCuttingNarrativeShort" hidden="hidden">
+                                                            Highest Score
+                                                            <input type="checkbox" id="IsHighestScoreSubTestCuttingNarrativeShort" class="k-checkbox" checked="checked" data-bind="checked:IsHighestScoreSubTestCuttingNarrativeShort" onchange="DisplayHighestScoreSubTestCuttingNarrativeShort(this)" />
+                                                            <input id="HighestScoreTotalDisplaySubTestCuttingNarrativeShort" name="HighestScoreTotalDisplaySubTestCuttingNarrativeShort" type="number" style="width:10%" data-bind="value: HighestScoreTotalDisplaySubTestCuttingNarrativeShort" />
+                                                            Sub Test
+                                                        </div>
+                                                        <div id="LowestScoreSubTestCuttingNarrativeShort" hidden="hidden">
+                                                            Lowest Score
+                                                            <input type="checkbox" id="IsLowestScoreSubTestCuttingNarrativeShort" class="k-checkbox" checked="checked" data-bind="checked:IsLowestScoreSubTestCuttingNarrativeShort" onchange="DisplayLowestScoreSubTestCuttingNarrativeShort(this)" />
+                                                            <input id="LowestScoreTotalDisplaySubTestCuttingNarrativeShort" name="LowestScoreTotalDisplaySubTestCuttingNarrativeShort" type="number" style="width:10%" data-bind="value: LowestScoreTotalDisplaySubTestCuttingNarrativeShort" />
+                                                            Sub Test
+                                                        </div>
+                                                    </li>
+
+                                                    <!-- SUBTEST CUTTING NARRATIVE LONG -->
+                                                    <li id="IsSubTestCuttingNarrativeLong" style="border: outset; width:50%; display:block" data-type="subtest">
+                                                        [[Sub Test Cutting Narratives - Long]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusSubTestCuttingNarrativeLong" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusSubTestCuttingNarrativeLong" onchange="DisplayStatusSubTestCuttingNarrativeLong(this)" />Display
+                                                        </span>
+                                                        <div id="AllNarrativesSubTestCuttingNarrativeLong">
+                                                            All Narratives
+                                                            <input type="radio" name="IsAllNarrativeSubTestCuttingNarrativeLong" id="IsAllNarrativeSubTestCuttingNarrativeLong" checked="checked" data-bind="checked: IsAllNarrativeSubTestCuttingNarrativeLong" onclick="AllNarrativeSubTestCuttingNarrativeLong(this)" />
+                                                            <span> Yes</span>
+                                                            <input type="radio" name="IsAllNarrativeSubTestCuttingNarrativeLong" id="IsNotAllNarrativeSubTestCuttingNarrativeLong" data-bind="checked: IsNotAllNarrativeSubTestCuttingNarrativeLong" onclick="NotAllNarrativeSubTestCuttingNarrativeLong(this)" />
+                                                            <span> No</span>
+                                                        </div>
+                                                        <div id="HighestScoreSubTestCuttingNarrativeLong" hidden="hidden">
+                                                            Highest Score
+                                                            <input type="checkbox" id="IsHighestScoreSubTestCuttingNarrativeLong" class="k-checkbox" checked="checked" data-bind="checked:IsHighestScoreSubTestCuttingNarrativeLong" onchange="DisplayHighestScoreSubTestCuttingNarrativeLong(this)" />
+                                                            <input id="HighestScoreTotalDisplaySubTestCuttingNarrativeLong" name="HighestScoreTotalDisplaySubTestCuttingNarrativeLong" type="number" style="width:10%" data-bind="value: HighestScoreTotalDisplaySubTestCuttingNarrativeLong" />
+                                                            Sub Test
+                                                        </div>
+                                                        <div id="LowestScoreSubTestCuttingNarrativeLong" hidden="hidden">
+                                                            Lowest Score
+                                                            <input type="checkbox" id="IsLowestScoreSubTestCuttingNarrativeLong" class="k-checkbox" checked="checked" data-bind="checked:IsLowestScoreSubTestCuttingNarrativeLong" onchange="DisplayLowestScoreSubTestCuttingNarrativeLong(this)" />
+                                                            <input id="LowestScoreTotalDisplaySubTestCuttingNarrativeLong" name="LowestScoreTotalDisplaySubTestCuttingNarrativeLong" type="number" style="width:10%" data-bind="value: LowestScoreTotalDisplaySubTestCuttingNarrativeLong" />
+                                                            Sub Test
+                                                        </div>
+                                                    </li>
+
+                                                    <!-- IQ NARRATIVE -->
+                                                    <li id="HasIQNarrative" style="border: outset; width:50%; display:block" data-type="iq">
+                                                        [[IQ Narratives]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusIQNarrative" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusIQNarrative" onchange="DisplayStatusIQNarrative(this)" />Display
+                                                        </span>
+                                                    </li>
+
+                                                    <!-- VALIDITY SCALE NARRATIVE -->
+                                                    <li id="HasValidityScaleNarrative" style="border: outset; width:50%; display:block" data-type="vs">
+                                                        [[Validity Scale Narratives]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusValidityScaleNarrative" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusValidityScaleNarrative" onchange="DisplayStatusValidityScaleNarrative(this)" />Display
+                                                        </span>
+                                                    </li>
+
+                                                    <!-- GROUP NARRATIVE -->
+                                                    <li id="HasGroupNarrative" style="border: outset; width:50%; display:block" data-type="group">
+                                                        [[Group Narratives]]
+                                                        <span style="float:right">
+                                                            <input type="checkbox" id="DisplayStatusGroupNarrative" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusGroupNarrative" onchange="DisplayStatusGroupNarrative(this)" />Display
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusNarrativesGroupNarratives" data-role="checkbox" class="k-checkbox" data-bind="checked:DisplayStatusNarrativesGroupNarratives" onchange="DisplayStatusNarrativesGroupNarratives(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="panelbarStrengthArea">
+                                    <div id="StrengthArea">
+                                        Strength Area
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitleStrengthArea" name="TitleStrengthArea" style="width:50%" data-bind="value: TitleStrengthArea" />
+                                            </li>
+                                            <li style="padding-bottom:2%">
+                                                <label style="width:90%">Value from Sub Test Narratives - Strength</label>
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusStrengthArea" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusStrengthArea" onchange="DisplayStatusStrengthArea(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                                <div id="panelbarDevelopmentArea">
+                                    <div id="DevelopmentArea">
+                                        Development Area
+                                        <ul class="form-content">
+                                            <li style="padding-top:2%">
+                                                <label>Title<span class="mandatory">*</span></label>
+                                                <input id="TitleDevelopmentArea" name="TitleDevelopmentArea" style="width:50%" data-bind="value: TitleDevelopmentArea" />
+                                            </li>
+                                            <li style="padding-bottom:2%">
+                                                <label style="width:90%">Value from Sub Test Narratives - Development Area</label>
+                                            </li>
+                                        </ul>
+                                        <span style="float:right">
+                                            <input type="checkbox" id="DisplayStatusDevelopmentArea" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatusDevelopmentArea" onchange="DisplayStatusDevelopmentArea(this)" />Display
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+                <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+                <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+
+    
+
+    <script>
+        $(function () {
+            $("#panelbarCandidateInformation").kendoPanelBar();
+            var panelbarCandidateInformation = $("#panelbarCandidateInformation").data("kendoPanelBar");
+            panelbarCandidateInformation.expand($("#CandidateInformation"));
+
+            $("#panelbarPsychogram").kendoPanelBar();
+            var panelbarPsychogram = $("#panelbarPsychogram").data("kendoPanelBar");
+            panelbarPsychogram.expand($("#Psychogram"));
+
+            $("#panelbarPsychogramAbility").kendoPanelBar();
+            var panelbarPsychogramAbility = $("#panelbarPsychogramAbility").data("kendoPanelBar");
+            panelbarPsychogramAbility.expand($("#PsychogramAbility"));
+
+            $("#panelbarPsychogramPersonality").kendoPanelBar();
+            var panelbarPsychogramPersonality = $("#panelbarPsychogramPersonality").data("kendoPanelBar");
+            panelbarPsychogramPersonality.expand($("#PsychogramPersonality"));
+
+            $("#panelbarNarrativesGroupNarratives").kendoPanelBar();
+            var panelbarNarrativesGroupNarratives = $("#panelbarNarrativesGroupNarratives").data("kendoPanelBar");
+            panelbarNarrativesGroupNarratives.expand($("#NarrativesGroupNarratives"));
+
+            $("#panelbarStrengthArea").kendoPanelBar();
+            var panelbarStrengthArea = $("#panelbarStrengthArea").data("kendoPanelBar");
+            panelbarStrengthArea.expand($("#StrengthArea"));
+
+            $("#panelbarDevelopmentArea").kendoPanelBar();
+            var panelbarDevelopmentArea = $("#panelbarDevelopmentArea").data("kendoPanelBar");
+            panelbarDevelopmentArea.expand($("#DevelopmentArea"));
+        });
+        $('#HighestScoreTotalDisplaySubTestNarrative').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#LowestScoreTotalDisplaySubTestNarrative').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#HighestScoreTotalDisplaySubTestNarrativeShort').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#LowestScoreTotalDisplaySubTestNarrativeShort').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#HighestScoreTotalDisplaySubTestNarrativeLong').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#LowestScoreTotalDisplaySubTestNarrativeLong').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+
+        $('#HighestScoreTotalDisplaySubTestCuttingNarrative').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#LowestScoreTotalDisplaySubTestCuttingNarrative').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#HighestScoreTotalDisplaySubTestCuttingNarrativeShort').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#LowestScoreTotalDisplaySubTestCuttingNarrativeShort').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#HighestScoreTotalDisplaySubTestCuttingNarrativeLong').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+        $('#LowestScoreTotalDisplaySubTestCuttingNarrativeLong').keypress(function (e) {
+            if (e.which == 46 || e.which == 44) {
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

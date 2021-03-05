@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+        var __CACHE_BUSTED_STYLES = [
+            "../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css"
+        ];
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Views/OnlineTesting/CompetencyMatrix/AddCompetencyMatrix.js",
+            "../../../Scripts/Views/OnlineTesting/CompetencyMatrix/AddCompetencyMatrixViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetReport/GetReport.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"
+        ]
+    </script>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+
+    <title>Add Competency Matrix</title>
+    <style>
+        .entered {
+            padding-bottom: 10px;
+        }
+
+        .widthTextBox {
+            width: 13%;
+        }
+
+        .widthTextBoxs {
+            width: 19.6%;
+        }
+
+        .tableGrid {
+            width: 100%;
+            /*border:1px solid lavender;*/
+        }
+
+        .noneBorderGrid {
+            border: none !important;
+        }
+
+        .headerTable {
+            width: 7%;
+            color: white;
+            font-size: 13px;
+            text-align: center;
+            background-color: #007DEA;
+        }
+
+        td, th {
+            height: 0.2rem;
+            border: 1px solid lavender;
+            padding: 0.5rem;
+        }
+
+        .formTable {
+            width: 100%;
+        }
+
+        .swal-text {
+            text-align: center !important
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup" data-bind="html:title"></span>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" onclick="hideForm(this)" class="arrow1">
+            <i class="k-icon k-i-arrow-s"></i>
+        </a>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" onclick="showForm(this)" hidden="hidden" class="arrow2">
+            <i class="k-icon k-i-arrow-n"></i>
+        </a>
+    </div>
+    <br />
+    <div id="example">
+        <div class="demo-section k-content">
+            <div id="content" class="toogle_header">
+                <div class="box1" id="boox">
+                    <ul class="form-content">
+                        <li>
+                            <label>Created By</label>
+                            <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width: 20%;" disabled="disabled" />
+                            <label style="padding-left:12%">Last Modified By</label>
+                            <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width: 20%;" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>Created On</label>
+                            <input id="createOn" name="createOn" type="text" data-bind="value:createOn" class="" style="width: 20%;" disabled="disabled" />
+                            <label style="padding-left:12%">Last Modified On</label>
+                            <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width: 20%;" disabled="disabled" />
+                        </li>
+                        <br />
+                    </ul>
+                </div>
+                <div class="column-new-tab-question">Competency Matrix</div>
+                <div class="column-new-tab-question-x">
+                    <ul class="form-content">
+                        <li>
+                            <label style="width:15%;">Competency Matrix Code<span class="mandatory">*</span></label>
+                            <input type="text" id="CompetencyMatrixCode" style="width:20%;" name="CompetencyMatrixCode" disabled="disabled" data-bind="value:CompetencyMatrixCode" />
+                            <label style="padding-left:12%">Company<span class="mandatory">*</span></label>
+                            <input id="CompanyId" name="CompanyId" data-role="combobox" style="width:20%" data-bind="value: CompanyName" />
+                        </li>
+                        <li>
+                            <label style="width:15%;">Competency Matrix Name<span class="mandatory">*</span></label>
+                            <input type="text" id="CompetencyMatrixName" name="CompetencyMatrixName" style="width:20%;" data-bind="value:CompetencyMatrixName" />
+                            <label style="padding-left:12%"> Display Status</label>
+                            <input type="checkbox" name="DisplayStatus" id="DisplayStatus" data-role="checkbox" data-bind="checked: DisplayStatus" onchange="Display(this)" /> Active
+                        </li>
+                        <br />
+                    </ul>
+                    <div class="column-new-tab-question" id="titleMatrixDetails" hidden="hidden">Matrix Details</div>
+                    <div class="column-new-tab-question-x" id="boxMatrixDetails" hidden="hidden">
+                        <ul class="form-content">
+                            <li>
+                                <label style="padding-left:5px;">
+                                    <button id="addCompetency" class="k-button btn-form k-primary" competencies="0" onclick="addCompetency(this)">Add Competency</button>
+                                </label>
+                            </li>
+                            <br />
+                            <li>
+                                <div class="Competencies" id="Competencies0" style="overflow-X:scroll">
+                                    <label style="width:18%; padding-left:4.5%; padding-right:7px">Competency<span class="mandatory">*</span></label>
+                                    <input data-type="combobox" id="CompetencyName0" name="CompetencyName0" data-bind="value:Competencies[0].CompetencyCode" class="widthTextBox" style="width:20%;" />
+                                    <label style="padding-left:8%;">Weight</label>
+                                    <input type="text" id="WeightCompetency0" name="WeightCompetency0" style="width:7%;" data-bind="value:WeightCompetency" disabled="disabled" />
+                                    <ul class="form-content">
+                                        <li>
+                                            <div class="entered">
+                                                <div>
+                                                    <table class="tableGrid" id="tableGrid0">
+                                                        <tr id="headerSubTest0" class="headerList0">
+                                                            <td style="width:68px;" class="noneBorderGrid"></td>
+                                                            <td style="width:68px;" class="noneBorderGrid"></td>
+                                                            <td class="headerTable">1</td>
+                                                            <td class="headerTable">2</td>
+                                                            <td class="headerTable">3</td>
+                                                            <td class="headerTable">4</td>
+                                                            <td class="headerTable">5</td>
+                                                            <td class="headerTable">6</td>
+                                                            <td class="headerTable">7</td>
+                                                            <td class="headerTable">8</td>
+                                                            <td class="headerTable">9</td>
+                                                            <td class="headerTable">10</td>
+                                                            <td style="width:36px;" class="noneBorderGrid"></td>
+                                                        </tr>
+                                                        <!--<tbody id="headerSubTest1"></tbody>-->
+                                                        <tr id="Label00" class="SubTestLists0">
+                                                            <td class="noneBorderGrid"><input id="TestToolName00" name="TestToolName00" data-role="combobox" data-bind="value:Competencies[0].SubTests[0].TestToolCode" style="width:100px;" /></td>
+                                                            <td class="noneBorderGrid"><input id="SubTestName00" name="SubTestName00" data-role="combobox" data-bind="value:Competencies[0].SubTests[0].SubTestCode" style="width:100px;" /></td>
+                                                            <td><input type="number" name="no100" class="k-textbox formTable" id="no100" data-bind="value:Competencies[0].SubTests[0].V1" /></td>
+                                                            <td><input type="number" name="no200" class="k-textbox formTable" id="no200" data-bind="value:Competencies[0].SubTests[0].V2" /></td>
+                                                            <td><input type="number" name="no300" class="k-textbox formTable" id="no300" data-bind="value:Competencies[0].SubTests[0].V3" /></td>
+                                                            <td><input type="number" name="no400" class="k-textbox formTable" id="no400" data-bind="value:Competencies[0].SubTests[0].V4" /></td>
+                                                            <td><input type="number" name="no500" class="k-textbox formTable" id="no500" data-bind="value:Competencies[0].SubTests[0].V5" /></td>
+                                                            <td><input type="number" name="no600" class="k-textbox formTable" id="no600" data-bind="value:Competencies[0].SubTests[0].V6" /></td>
+                                                            <td><input type="number" name="no700" class="k-textbox formTable" id="no700" data-bind="value:Competencies[0].SubTests[0].V7" /></td>
+                                                            <td><input type="number" name="no800" class="k-textbox formTable" id="no800" data-bind="value:Competencies[0].SubTests[0].V8" /></td>
+                                                            <td><input type="number" name="no900" class="k-textbox formTable" id="no900" data-bind="value:Competencies[0].SubTests[0].V9" /></td>
+                                                            <td><input type="number" name="no1000" class="k-textbox formTable" id="no1000" data-bind="value:Competencies[0].SubTests[0].V10" /></td>
+                                                            <td class="noneBorderGrid"><input type="text" id="Weight00" name="Weight00" data-bind="value:Competencies[0].SubTests[0].Weight" style="width:36px;" /></td>
+                                                            <td class="noneBorderGrid"><a href="#" id="addSubTest00" no="0" competencies="0" onclick="addSubTest(this)"><i class="fas fa-plus"></i></a></td>
+                                                        </tr>
+                                                        <!--<tbody id="Label10"></tbody>-->
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <br>
+                                <div id="Competencies"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+                <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+                <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+
+    
+</body>
+</html>

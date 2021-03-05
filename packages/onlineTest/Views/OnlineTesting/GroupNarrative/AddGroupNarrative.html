@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+
+        var __CACHE_BUSTED_STYLES = [
+             "../../../Content/bootstrap/layout-grid/bootstrap.css",
+			"../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+           "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css",
+        ];
+
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Views/OnlineTesting/GroupNarrative/AddGroupNarrative.js",
+			"../../../Scripts/Views/OnlineTesting/GroupNarrative/AddGroupNarrativeViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetReport/GetReport.js",
+       
+        ];
+    </script>
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+	
+
+<title>Group of Narrative</title>
+    <style>
+        .entered {padding-bottom: 10px;}
+        .widthTextBox {width: 15%;}.widthTextBoxs {width: 14.6%;}.form-content {padding: 30px;}.row {padding: 15px;}
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup" data-bind="html:title"></span>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" onclick="hideForm(this)" class="arrow1">
+            <i class="k-icon k-i-arrow-s"></i>
+        </a>
+        <a href="#" style="position:absolute; padding-left:80%; color:white;" onclick="showForm(this)" hidden="hidden" class="arrow2">
+            <i class="k-icon k-i-arrow-n"></i>
+        </a>
+    </div>
+    <br />
+    <div id="example">
+
+        <div class="demo-section k-content">
+
+
+            <div id="content" class="toogle_header">
+                <div class="box1" id="boox">
+                    <ul class="form-content">
+                        <li>
+                            <label>
+                                Created By
+                                <!--<span class="mandatory">*</span>-->
+                            </label>
+                            <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width: 20%;" disabled="disabled" />
+
+                            <label style="padding-left:12%">Last Modified By</label>
+                            <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width: 20%;" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>
+                                Created On
+                                <!--<span class="mandatory">*</span>-->
+                            </label>
+                            <input id="createOn" name="createOn" type="text" data-bind="value:createOn" class="" style="width: 20%;" disabled="disabled" />
+
+                            <label style="padding-left:12%">Last Modified On</label>
+                            <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width: 20%;" disabled="disabled" />
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="column-new-tab-question"></div>
+                <div class="column-new-tab-question-x">
+                    <div class="form-content">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Code<span class="mandatory">*</span></label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input type="text" id="GroupCode" style="width:35%;" name="GroupCode" data-bind="value:GroupCode" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Company<span class="mandatory">*</span></label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input id="CompanyList" name="CompanyList" data-role="combobox" style="width:250px" data-bind="value: CompanyList" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Mapping Report<span class="mandatory">*</span></label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input data-type="text" id="MappingReport" style="width:36.5%;" name="MappingReport" data-bind="value:MappingReport" class="widthTextBox" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label>Title<span class="mandatory">*</span></label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input data-type="text" id="TitleGroupNarrative" style="width:36.5%;" name="TitleGroupNarrative" data-bind="value:TitleGroupNarrative" class="k-textbox widthTextBox" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <label> Display Status</label>
+                            </div>
+                            <div class="col-xs-8">
+                                <input type="checkbox" name="DisplayStatus" id="DisplayStatus" data-role="checkbox" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                                <span>Active</span>
+                            </div>
+                        </div>
+                        <!--<div class="row">
+                            <div class="col-xs-2">
+                                <label>
+                                    <button id="addSubTest" class="k-button btn-form k-primary" no="1" onclick="addSubTest(this)">Add Sub Test</button>
+                                </label>
+                            </div>
+                        </div>-->
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <div class="SubTestList entered" id="Label1">
+                                    <label>Mapping<span class="mandatory">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <input id="TestToolName1" name="TestTool1" data-role="combobox" data-bind="value: TestToolLists.TestToolCode" style="width:26%;margin-right:7px;" />
+                                <input id="SubTestName1" name="SubTestName1" data-role="combobox" data-bind="value: SubTestLists.SubTestCode" style="width:26%;" />
+                                <button id="addSubTest" class="k-button btn-form k-primary" onclick="addDataMapping(this)"><i class="fas fa-check-square fa-2x"></i></button>
+                                <div style="margin-top:10px;">
+                                    <table id="gridDataMapping">
+                                        <thead>
+                                            <tr>
+                                                <th data-field="TestTool">Test Tool</th>
+                                                <th data-field="Subtest">Subtest</th>
+                                                <th data-field="Action">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--<div id="SubTestLists" style="margin-top:15px;"></div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+                <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+            
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+    
+    
+</body>
+</html>

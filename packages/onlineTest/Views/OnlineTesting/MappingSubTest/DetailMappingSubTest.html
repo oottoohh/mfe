@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css" />
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/sweet.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/common.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/constant.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/MessageBox.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/MappingSubTest/AddMappingSubTest.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/MappingSubTest/AddMappingSubTestViewModel.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"></script>
+    <title>Add Mapping Sub Test</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Add Mapping Sub Test</span>
+    </div>
+    <br />
+    <div id="example">
+        <div class="demo-section k-content">
+            <ul class="form-content">
+                <li>
+                    <label>Created By</label>
+                    <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width: 20%;" disabled="disabled" />
+                    <label style="padding-left:12%">Last Modified By</label>
+                    <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width: 20%;" disabled="disabled" />
+                </li>
+                <li>
+                    <label>Created On</label>
+                    <input id="createOn" name="createOn" type="date" data-bind="value:createOn" class="" style="width: 20.2%;" disabled="disabled" />
+                    <label style="padding-left:12%">Last Modified On</label>
+                    <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width: 20%;" disabled="disabled" />
+                </li>
+                <li></li>
+            </ul>
+            <div class="column-new-tab-question">Mapping Sub Test</div>
+            <div class="column-new-tab-question-x">
+                <ul class="form-content">
+                    <li>
+                        <label style="width:12%">Sub Test Mapping Code<span class="mandatory">*</span></label>
+                        <input type="text" class="" id="SubTestMappingCode" data-bind="value:SubTestMappingCode" name="SubTestMappingCode" style="width:20%;" disabled="disabled" />
+                    </li>
+                    <li>
+                        <label style="width:12%">Sub Test Mapping Name<span class="mandatory">*</span></label>
+                        <input type="text" class="" id="SubTestMappingName" data-bind="value:SubTestMappingName" name="SubTestMappingName" style="width:20%;" />
+                    </li>
+                    <li>
+                        <label style="width:12%">Test Tool<span class="mandatory">*</span></label>
+                        <input id="TestToolName" name="TestToolName" data-role="combobox" style="width:20.5%" data-bind="value:TestToolName" placeholder="Select Type.." />
+                    </li>
+                    <li>
+                        <label style="width:12%">Display Status<span class="mandatory">*</span></label>
+                        <input type="checkbox" name="DisplayStatus" id="DisplayStatus" value="true" data-role="boolean" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                        <span> Active</span>
+                    </li>
+                </ul>
+                <div id="gridMapping"></div>
+            </div>
+            <br />
+            <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+            <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+        </div>
+    </div>
+</body>
+</html>

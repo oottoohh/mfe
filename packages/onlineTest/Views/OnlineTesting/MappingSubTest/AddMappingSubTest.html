@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+        var __CACHE_BUSTED_STYLES = [
+            "../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css"
+        ];
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Views/OnlineTesting/MappingSubTest/AddMappingSubTest.js",
+            "../../../Scripts/Views/OnlineTesting/MappingSubTest/AddMappingSubTestViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"
+        ]
+    </script>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+
+    <title>Add Mapping Sub Test</title>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Add Mapping Sub Test</span>
+    </div>
+    <br />
+    <div id="example">
+        <div class="demo-section k-content">
+            <ul class="form-content">
+                <li>
+                    <label>Created By</label>
+                    <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width: 20%;" disabled="disabled" />
+                    <label style="padding-left:12%">Last Modified By</label>
+                    <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width: 20%;" disabled="disabled" />
+                </li>
+                <li>
+                    <label>Created On</label>
+                    <input id="createOn" name="createOn" type="text" data-bind="value:createOn" class="" style="width: 20.2%;" disabled="disabled" />
+                    <label style="padding-left:12%">Last Modified On</label>
+                    <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width: 20%;" disabled="disabled" />
+                </li>
+                <li></li>
+            </ul>
+            <div class="column-new-tab-question">Mapping Sub Test</div>
+            <div class="column-new-tab-question-x">
+                <ul class="form-content">
+                    <li>
+                        <label style="width:20%">Sub Test Mapping Code<span class="mandatory">*</span></label>
+                        <input type="text" class="" id="MappingSubTestCode" data-bind="value:MappingSubTestCode" name="MappingSubTestCode" style="width:20%;" disabled="disabled" />
+                    </li>
+                    <li>
+                        <label style="width:20%">Sub Test Mapping Name<span class="mandatory">*</span></label>
+                        <input type="text" class="" id="MappingSubTestName" data-bind="value:MappingSubTestName" name="MappingSubTestName" style="width:20%;" />
+                    </li>
+                    <li>
+                        <label style="width:20%">Test Tool<span class="mandatory">*</span></label>
+                        <input id="TestToolName" name="TestToolName" data-role="combobox" style="width:20.7%" data-bind="value:TestToolName" placeholder="Select Type.." />
+                    </li>
+                    <li>
+                        <label style="width:20%">Display Status</label>
+                        <input type="checkbox" name="DisplayStatus" id="DisplayStatus" value="true" data-role="boolean" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                        <span> Active</span>
+                    </li>
+                </ul>
+                <div style="padding-left:2.5%">
+                    <div id="gridMapping"></div>
+                </div>
+            </div>
+            <br />
+            <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+            <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+
+   
+</body>
+</html>

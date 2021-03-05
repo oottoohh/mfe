@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+    <style>
+        .btn-form {
+            width: 125px;
+            height: 30px;
+        }
+
+        .colomup {
+            width: 100%;
+            height: 30px;
+            background-color: #007DEA;
+        }
+
+        .headup {
+            color: white;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+        .disabled{
+            background-color:#9F9F9F;
+        }
+        .k-icon {
+        font-size: 48px; /* Sets icon size to 48px */
+        }
+        /*.fieldlist {
+            margin: 0 0 -1em;
+            padding: 0;
+        }
+
+        .fieldlist li {
+            list-style: none;
+            padding-bottom: 1em;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="colomup">
+        <span class="headup">Add Test Type</span><span style="position:absolute;"><i class="k-icon k-i-kpi-trend-decrease"></i></span>
+    </div>
+    <br />
+    <div id="example">
+
+        <div class="demo-section k-content">
+
+
+            <div id="content" class="toogle_header">
+
+                <ul class="form-content">
+                    <li>
+                        <label>Created By
+                        <!--<span class="mandatory">*</span>-->
+                        </label>
+                        <input id="create_by" type="text" name="create_by" class="k-textbox" style="width: 20%;" disabled="disabled" />
+                        <!--<input placeholder="Please Select" data-role="combobox" style="width:230px"
+                               data-bind="source: listRegion, value: Region" data-text-field="DropdownName" data-value-field="DropdownName"
+                               data-filter="contains" data-suggest="true" />-->
+                        <label style="padding-left:10%">Last Modified By</label>
+                        <input id="last_modified_by" name="last_modified_by" type="text" class="k-textbox" style="width: 20%;" disabled="disabled" />
+                    </li>
+                    <li>
+                        <label>Created On
+                        <!--<span class="mandatory">*</span>-->
+                        </label>
+                        <input id="create_on" name="create_on" type="date" class="k-textbox" style="width: 20%;" disabled="disabled" />
+                        <!--<input placeholder="Please Select" data-role="combobox" style="width:230px"
+                               data-bind="source: listBranchType, value: BranchType" data-text-field="DropdownName" data-value-field="DropdownName"
+                               data-filter="contains" data-suggest="true" />-->
+                        <label style="padding-left:10%">Last Modified On</label>
+                        <input id="last_modified_on" name="last_modified_on" type="text" class="k-textbox" style="width: 20%;" disabled="disabled" />
+                    </li>
+                    <li>
+                       
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="colomup">
+        <span class="headup" width="100%"></span>
+    </div>
+    <br />
+    <div class="demo-section k-content">
+
+
+        <div id="content" class="toogle_header">
+
+            <ul class="form-content fieldlist">
+                <li>
+                    <label>
+                        Test Type Code
+                        <span class="mandatory">*</span>
+                    </label>
+                    <input id="create_by" type="text" name="create_by" class="k-textbox" style="width: 20%;" disabled="disabled" />
+                    <!--<input placeholder="Please Select" data-role="combobox" style="width:230px"
+                           data-bind="source: listRegion, value: Region" data-text-field="DropdownName" data-value-field="DropdownName"
+                           data-filter="contains" data-suggest="true" />-->
+                    <label style="padding-left:10%; width:50%">Config
+                        <span class="mandatory">*</span>: Display Question for Online Test</label>
+                    
+                </li>
+                <li>
+                    <label>
+                        Name
+                        <span class="mandatory">*</span>
+                    </label>
+                    <input id="create_on" name="create_on" type="text" class="k-textbox" style="width: 20%;" placeholder="Test Type Name" />
+                    <!--<input placeholder="Please Select" data-role="combobox" style="width:230px"
+                           data-bind="source: listBranchType, value: BranchType" data-text-field="DropdownName" data-value-field="DropdownName"
+                           data-filter="contains" data-suggest="true" />-->
+                    <span style="padding-left:10%;"></span>
+                    <input  type="radio" name="engine" id="engine1" class="k-radio" checked="checked">
+                    <label class="k-radio-label" for="engine1">By Test</label>
+                    
+                    
+                    
+                </li>
+                <li>
+                    <span style="padding-left:10%;"></span>
+                    <span style="padding-left:1%;"></span>
+                    <span style="padding-left:20%;"></span>
+                    <span style="padding-left:10%;"></span>
+                    <input type="radio" name="engine" id="engine2" class="k-radio" checked="checked">
+                    <label class="k-radio-label" for="engine1">By Sub Test</label> 
+                </li>
+                <li>
+                    <label>
+                        Description
+                    </label>
+                    <textarea id="description" name="description"  rows="10" cols="30" style="height:60px;width:20%" aria-label="editor" class="k-textbox" style="width:"></textarea>
+                    <!--<textarea id="editor" rows="10" cols="30" style="height:440px" aria-label="editor">
+                        
+                    </textarea>
+                    <script>
+                $(document).ready(function() {
+                    // create Editor from textarea HTML element with default set of tools
+                    $("#editor").kendoEditor({ resizable: {
+                        content: true,
+                        toolbar: true
+                    }});
+                });
+                    </script>-->
+                    
+                    
+                </li>
+                <li>
+                    <label>
+                        Display Status
+                    </label>
+                    <input type="checkbox" name="active_display" id="active_display" class=""/>
+                    <span>Active</span>
+                    
+                </li>
+                <li>
+                    <button id="btn_save" class="k-button k-primary btn-form">Save</button>&nbsp;
+                    <button id="btn_cancel" class="k-button btn-form k-primary">Cancel</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

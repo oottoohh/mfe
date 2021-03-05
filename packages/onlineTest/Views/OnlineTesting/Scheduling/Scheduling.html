@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+
+        var __CACHE_BUSTED_STYLES = [
+			"../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+           "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css",
+        ];
+
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/common.js",
+			"../../../Scripts/Common/js.cookie.js",
+			"../../../Scripts/Views/OnlineTesting/Scheduling/Scheduling.js",
+            "../../../Scripts/Views/OnlineTesting/Scheduling/SchedulingViewModel.js",
+			"../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js",
+        ]
+    </script>
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+<title>Scheduling</title>
+    <style>
+        td, th {
+            height: 0.2rem;
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Scheduling</span>
+    </div>
+    <br />
+
+    <table>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <input id="Name" name="Name" class="k-textbox" style="width:200px;" data-bind="value: Name" />
+            </td>
+            <td>
+                Position
+            </td>
+            <td>
+                <input id="Position" name="Position" data-role="combobox" style="width:200px;" data-bind="value:Position" />
+            </td>
+            <td>
+                Invitation Date
+            </td>
+            <td>
+                <input id="InvitationDate1" name="InvitationDate1" type="date" style="width:149px;" class="datepicker" data-bind="value:InvitationDate1" />
+                <input id="InvitationDate2" name="InvitationDate2" type="date" style="width:149px;" class="datepicker" data-bind="value:InvitationDate2" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Company
+            </td>
+            <td>
+                <input id="Company" name="Company" data-role="dropdownlist" style="width:200px;" data-bind="value: Company" />
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                <input id="Status" name="Status" data-role="dropdownlist" style="width:200px;" data-bind="value:Status" />
+            </td>
+            <td>
+                Expiration Date
+            </td>
+            <td>
+                <input id="ExpirationDate1" name="ExpirationDate1" type="date" style="width:149px;" class="datepicker" data-bind="value:ExpirationDate1" />
+                <input id="ExpirationDate2" name="ExpirationDate2" type="date" style="width:149px;" class="datepicker" data-bind="value:ExpirationDate2" />
+            </td>
+        </tr>
+    </table>
+    <br />
+
+    <div id="example">
+
+        <div class="demo-section k-content">
+            <ul class="form-content">
+                <li>
+                    <table>
+                        <tr>
+                            <b>Status Definition :</b>
+                            <td class="waiting1">1. Waiting Invitation </td>
+                            <td class="waiting2">:</td>
+                            <td class="waiting3"> Aplikan belum mendapatkan invitation</td>
+                            <br />
+                        </tr>
+                        <tr>
+                            <td class="waiting1">2. Waiting for Online Test </td>
+                            <td class="waiting2">:</td>
+                            <td class="waiting3"> Aplikan sudah mendapatkan invitation dan belum login</td>
+                        </tr>
+                        <tr>
+                            <td class="waiting1">3. Waiting Result </td>
+                            <td class="waiting2">:</td>
+                            <td class="waiting3"> Aplikan sudah login, tetapi belum submit jawaban online test</td>
+                        </tr>
+                        <tr>
+                            <td class="waiting1">4. Not Attend </td>
+                            <td class="waiting2">:</td>
+                            <td class="waiting3"> Aplikan tidak login sejak invitation dikirimkan hingga expired setelah waktu yang ditentukan</td>
+                        </tr>
+                        <tr>
+                            <td class="waiting1">5. Completed </td>
+                            <td class="waiting2">:</td>
+                            <td class="waiting3"> Aplikan sudah submit jawaban online test</td>
+                        </tr>                        
+                        <tr>
+                            <td class="waiting1">6. Incomplete</td>
+                            <td class="waiting2">:</td>
+                            <td class="waiting3"> Aplikan belum submit jawaban online test hingga waktu expired yang telah ditentukan</td>
+                        </tr>
+                    </table>
+
+                </li>
+                <br />
+                <li>
+                    <button id="btn_seacrh" class="k-button k-primary btn-form" data-bind="click: search">Search</button>&nbsp;
+                    <button id="btn_clear" class="k-button btn-form" data-bind="click: clear">Clear</button>
+                </li>
+                <li>
+                    <br />
+                    <a href="#" id="addTestType" class="k-button k-primary btn-form" data-bind="click:SendInvitation">Send Invitation</a>
+                </li>
+            </ul>
+        </div>
+        <br />
+        <table id="grid" data-bind="source:TestToolGrid">
+        </table>
+
+    </div>
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+            
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+    
+    
+</body>
+</html>

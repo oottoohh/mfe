@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+        var __CACHE_BUSTED_STYLES = [
+			"../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+		    "../../../Content/FontAwesome.css",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css"
+        ];
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/common.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/messageBox.js",
+			"../../../Scripts/Common/localStore.js",
+			"../../../Scripts/Views/OnlineTesting/ValidityScale/AddValidityScale.js",
+            "../../../Scripts/Views/OnlineTesting/ValidityScale/AddValidityScaleViewModel.js",
+			"../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js"
+        ]
+    </script>
+    
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+    
+    <title>Add Validity Scale</title>
+    <style>
+        .swal-overlay {
+            z-index: 99999 !important
+        }
+        .swal-text {
+            text-align: center !important
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Add Validity Scale</span>
+    </div>
+    <div id="dialog">
+        <div class="list-data" hidden="hidden">
+            <ul class="form-content">
+                <li>
+                    <label>Test Tool</label>
+                    <input data-role="combobox" id="TestToolName" name="TestToolName" data-bind="value:TestToolName" disabled="disabled" />
+                    <label style="padding-left:25px;">Question</label>
+                    <input type="text" id="Question" name="Question" style="width:20%;" data-bind="value:Question" />
+                </li>
+                <li>
+                    <label>Sub Test</label>
+                    <input data-role="combobox" id="SubTestName" name="SubTestName" data-bind="value:SubTestName" />
+                    <label style="padding-left:25px;">Display Status</label>
+                    <input type="checkbox" name="isDisplay" id="isDisplay" value="true" class="k-checkbox isDisplay" data-role="boolean" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                    <span> Active</span>
+                </li>
+                <li>
+                    <button id="btn_seacrh" class="k-button k-primary btn-form" onclick="Search1()">Search</button>
+                    <button id="btn_clear" class="k-button btn-form" data-bind="click:clear">Clear</button>
+                </li>
+            </ul>
+            <br /><div id="gridTable"></div><br />
+            <button class="k-button k-primary btn-form" onclick="TempItem1()">Ok</button> &nbsp;&nbsp;
+            <button class="k-button k-default btn-form" onclick="CancelItem1()">Cancel</button>
+        </div>
+    </div>
+    <div id="dialog2">
+        <div class="list-data2" hidden="hidden">
+            <ul class="form-content">
+                <li>
+                    <label>Test Tool</label>
+                    <input data-role="combobox" id="TestToolName2" name="TestToolName" data-bind="value:TestToolName" disabled="disabled" />
+                    <label style="padding-left:25px;">Question</label>
+                    <input type="text" id="Question2" name="Question" style="width:20%;" data-bind="value:Question" />
+                </li>
+                <li>
+                    <label>Sub Test</label>
+                    <input data-role="combobox" id="SubTestName2" name="SubTestName" data-bind="value:SubTestName" />
+                    <label style="padding-left:25px;">Display Status</label>
+                    <input type="checkbox" name="isDisplay" id="isDisplay2" value="true" class="k-checkbox isDisplay" data-role="boolean" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                    <span> Active</span>
+                </li>
+                <li>
+                    <button id="btn_seacrh" class="k-button k-primary btn-form" onclick="Search2()">Search</button>
+                    <button id="btn_clear" class="k-button btn-form" data-bind="click:clear">Clear</button>
+                </li>
+            </ul>
+            <br /><div id="gridTable2"></div><br />
+            <button class="k-button k-primary btn-form" onclick="TempItem2()">Ok</button> &nbsp;&nbsp;
+            <button class="k-button k-default btn-form" onclick="CancelItem2()">Cancel</button>
+        </div>
+    </div>
+    <br />
+    <div id="example">
+        <div class="demo-section k-content">
+            <div id="content" class="toogle_header">
+                <div class="box1" id="boox">
+                    <ul class="form-content">
+                        <li>
+                            <label>Created By</label>
+                            <input id="createBy" type="text" name="createBy" data-bind="value:createBy" class="" style="width: 20%;" disabled="disabled" />
+
+                            <label style="padding-left:12%">Last Modified By</label>
+                            <input id="lastModifiedBy" name="lastModifiedBy" data-bind="value:lastModifiedBy" type="text" class="" style="width: 20%;" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>Created On</label>
+                            <input id="createOn" name="createOn" type="text" data-bind="value:createOn" class="" style="width: 20%;" disabled="disabled" />
+
+                            <label style="padding-left:12%">Last Modified On</label>
+                            <input id="lastModifiedOn" name="lastModifiedOn" data-bind="value:lastModifiedOn" type="text" class="" style="width: 20%;" disabled="disabled" />
+                        </li>
+                        <li>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="column-new-tab-question">Validity Scale</div>
+                <div class="column-new-tab-question-x">
+                    <ul class="form-content">
+                        <li>
+                            <label>Validity Scale Code<span class="mandatory">*</span></label>
+                            <input type="text" id="ValidityScaleCode" data-bind="value:ValidityScaleCode" name="ValidityScaleCode" style="width:20%;" disabled="disabled" />
+                        </li>
+                        <li>
+                            <label>Validity Scale Name<span class="mandatory">*</span></label>
+                            <input type="text" id="ValidityScaleName" data-bind="value:ValidityScaleName" name="ValidityScaleName" style="width:20%;" />
+                        </li>
+                        <li>
+                            <label>Test Type<span class="mandatory">*</span></label>
+                            <input data-type="combobox" id="TestTypeName" data-bind="value:TestTypeName" name="TestTypeName" style="width:20%;" />
+                        </li>
+                        <li>
+                            <label>Test Tool<span class="mandatory">*</span></label>
+                            <input data-type="combobox" id="TestTool" name="TestTool" data-bind="value:TestToolName" style="width:20%;" />
+                        </li>
+                        <li>
+                            <label>Display Status</label>
+                            <input type="checkbox" name="isDisplay" id="isDisplay" value="true" class="k-checkbox isDisplay" data-role="boolean" data-bind="checked: DisplayStatus" onchange="Display(this)" />
+                            <span> Active</span>
+                        </li>
+                    </ul>
+                    <!--<div id="NormScoreFill"></div>-->
+                    <div class="column-new-tab-question">Config</div>
+                    <div class="column-new-tab-question-x">
+                        <ul class="form-content">
+                            <li>
+                                <input type="radio" name="IsBySubTest" id="IsBySubTest" data-bind="checked: IsBySubTest" />
+                                <span> Based on Sub Test</span>
+                            </li>
+                            <li>
+                                <label style="padding-left:3%">Sub Test</label>
+                                <input data-type="combobox" id="SubTest" name="SubTest" data-bind="value:SubTestName" style="width:20%;" />
+                            </li>
+                            <li></li>
+                            <li>
+                                <input type="radio" name="IsBySubTest" id="IsByMappingQuestion" data-bind="checked: IsByMappingQuestion" />
+                                <span> Based on Mapping Question</span>
+                            </li>
+                            <li>
+                                <label style="padding-left:3%">Item 1</label>
+                                <input type="text" id="QuestionAnswerCode1" data-bind="value:QuestionAnswerCode1" name="QuestionAnswerCode1" style="width:20%;" />
+                                <span id="searchBtnItem1">
+                                    <button class="k-button k-primary btn-form" id="btnItem1" edit="false" onclick="searchItem1(this)">Search Item 1</button>
+                                </span>
+                            </li>
+                            <li>
+                                <label style="padding-left: 3%">Item 2</label>
+                                <input type="text" id="QuestionAnswerCode2" data-bind="value:QuestionAnswerCode2" name="QuestionAnswerCode2" style="width:20%;" />
+                                <span id="searchBtnItem2">
+                                    <button class="k-button k-primary btn-form" id="btnItem2" edit="false" onclick="searchItem2(this)">Search Item 2</button>
+                                </span>
+                            </li>
+                            <br />
+                            <li style="padding-left:3%">
+                                <span id="checkAddMapping">
+                                    <button class="k-button k-primary btn-form" id="addMapping" onclick="addMapping(this)">Add Mapping</button>
+                                </span>
+                            </li>
+                            <li style="padding-left:3%">
+                                <span id="checkUpdateMapping">
+                                    <button class="k-button k-primary btn-form" id="updateMapping" onclick="updateMapping(this)">Update Mapping</button>
+                                </span>
+                            </li>
+                            <br />
+                        </ul>
+                        <div id="grid"></div>
+                    </div>
+                </div>
+                <br />
+                <button class="k-button k-primary btn-form" id="btnSave" data-bind="click:save">Save</button>
+                <button class="k-button k-default btn-form" id="btnCancel" data-bind="click:cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+            
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+    
+   
+</body>
+</html>

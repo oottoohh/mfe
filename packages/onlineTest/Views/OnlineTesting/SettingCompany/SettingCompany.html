@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+
+    <script type="text/javascript" src="../../../Scripts/Common/sweet.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/common.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/constant.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/MessageBox.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/SettingCompany/SettingCompany.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/SettingCompany/SettingCompanyViewModel.js"></script>
+    <title>Setting Company</title>
+    <style>
+        .backImage {
+            width:100%;
+            height:100%;
+            background-image: url(../../../Images/add-picture.jpg);
+            border: thin
+        }
+    </style>
+</head>
+<body>
+    <div class="column-new-tab-question-x" >
+        <img src="../../../Images/AIStandard-Logo.gif"/><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Setting Company</span>
+    </div>
+    <br />
+    <div class="demo-section k-content">
+        <div id="content" class="toogle_header">
+            <ul class="form-content">
+                <li>
+                    <label>
+                        Company
+                    </label>
+                    <input id="CompanyName" name="CompanyName" data-role="combobox" style="width: 20%;" data-bind="value:Company" />
+                    
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <div class="colomup">
+        <span class="headup">Company Logo</span>
+    </div>
+    <br />
+    <div class="demo-section k-content">
+        <div id="Div1" class="toogle_header">
+            <ul class="form-content">
+                <li>
+                    <label>
+                        Logo
+                    </label>
+                    <label>
+                         <img id="companyLogoPicID" src="" hidden="hidden" />
+                         <img id="companyLogoPic" src="" style="background: no-repeat url(../../../Images/add-picture.jpg) center; border: thin" class="backImage" width="100%" />
+                         <input name="companyLogo" id="companyLogo" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.companyLogoChange(this, this.files)" />
+                    </label>
+                         <input type="hidden" id="companyLogoId1" name="companyLogoId1" value="0" />
+                         <a href="#" class="k-button" style="display: none" onclick="viewModel.companyLogoRemove(this)"><span class="k-icon k-delete"></span></a>
+                    <label style="padding-left:139px;">
+                        Last Modified By
+                    </label>
+                    <input type="text" id="LastModifiedBy" name="LastModifiedBy" data-bind="value:LastModifiedBy" style="width:200px;" disabled="disabled"/>
+                </li>
+                <li>
+                    <label></label>
+                    <span>* Max. file size 2 MB</span>
+                    <label style="padding-left:155px;">
+                        Last Modified On
+                    </label>
+                    <input type="text" id="LastModifiedOn" name="LastModifiedOn" data-bind="value:LastModifiedOn" style="width:200px;" disabled="disabled"/>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+    <div class="colomup">
+        <span class="headup">Expiration Time Login Applicant</span>
+    </div>
+    <br />
+    <div class="demo-section k-content">
+        <div id="Div2" class="toogle_header">
+            <ul class="form-content">
+                <li>
+                    <label>
+                        Expiration Time<span class="mandatory">*</span>
+                    </label>
+                    <input id="Text2" name="CompanyName" type="number" class="k-textbox" style="width: 60px;" data-bind="value:ExpirationTime" />
+                    <span> Hour(s)</span>
+                </li>
+                <li>
+                    <br />
+                    <button class="k-button k-primary btn-form-x" data-bind="click: save">Save</button>
+                    <button class="k-button k-default btn-form-x" data-bind="click: cancel">Cancel</button>
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>

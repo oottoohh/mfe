@@ -1,0 +1,99 @@
+﻿@font-face {
+    font-family: 'BreeSerif';
+    src: url('/Content/fonts/Bree_Serif/BreeSerif-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url('/Content/fonts/Muli/Muli-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'GreatVibes';
+    src: url('/Content/fonts/Great_Vibes/GreatVibes-Regular.ttf');
+}
+
+.visible-print {
+    display: none;
+}
+
+@media print {
+    #header-cert {
+        font-family: BreeSerif;
+        font-size: 38px;
+        padding-top: 100px;
+        letter-spacing: 7px;
+        text-align: center;
+    }
+
+    #below-header {
+        font-family: Muli;
+        font-size: 18px;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+
+    #name-cert {
+        font-family: GreatVibes;
+        font-size: 70px;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+
+    #below-name {
+        font-family: Muli;
+        font-size: 17px;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+
+    #title-cert {
+        font-family: BreeSerif;
+        font-size: 18px;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    #time-place {
+        font-family: Muli;
+        font-size: 17px;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+
+    #training-region {
+        font-family: Muli;
+        font-size: 17px;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+
+    #bg-cert {
+        position: absolute;
+        z-index: -100;
+        width: 299mm;
+        height: 211mm;
+        margin-left: -7.5px;
+        margin-top: -38px;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    #content-cert {
+        width: 297mm;
+        height: 210mm;
+    }
+
+    .visible-print {
+        display: block;
+    }
+
+    .hidden-print {
+        display: none;
+    }
+
+    @page {
+        margin: 0;
+        size: A4;
+        size: landscape;
+    }
+}

@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+
+        var __CACHE_BUSTED_STYLES = [
+			"../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+           "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css",
+        ];
+
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/common.js",
+			"../../../Scripts/Common/localStore.js",
+            "../../../Scripts/Views/OnlineTesting/QuestionAnswer/QuestionAnswerCategory.js",
+			"../../../Scripts/Views/OnlineTesting/QuestionAnswer/QuestionAnswerCategoryViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js",
+
+        ]
+    </script>
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+    <title>Question And Answer Category</title>
+    <style>
+        .swal-overlay {
+            z-index: 10000000;
+        }
+
+        .k-window-content a {
+            color: #bbb;
+        }
+
+        .k-window-content p {
+            margin-bottom: 1em;
+        }
+
+        #contoh {
+            min-height: 600px;
+        }
+
+        @media screen and (max-width:1023px) {
+            div.k-dialog {
+                display: none !important;
+            }
+        }
+
+        .widths {
+            width: 65px;
+        }
+
+        .backImage {
+            width: 100%;
+            height: 100%;
+            background-image: url(../../../Images/add-picture.jpg);
+            border: thin
+        }
+    </style>
+</head>
+<body>
+    <div id="contoh" hidden="hidden">
+        <div id="dialog" class="list-data" hidden="hidden">
+            <ul class="form-content">
+                <li>
+                    <label>Name<span class="mandatory">*</span></label>
+                    <input data-type="text" class="k-textbox" id="VerbalName" name="VerbalName"
+                           data-bind="value:Story.VerbalName" />
+                    <label style="padding-left:25px;">Duration<span class="mandatory">*</span></label>
+                    <input class="k-textbox" type="number" min="0" oninput="this.value = Math.abs(this.value)" id="VerbalDuration" name="VerbalDuration"
+                           data-bind="value:Story.VerbalDuration" />
+                    <span>Seconds</span>
+                </li>
+                <li>
+                    <label>Story<span class="mandatory">*</span></label>
+                    <div style="padding-left:140px;padding-right:120px;">
+                        <textarea class="editor" id="VerbalStory" name="VerbalStory" data-bind="value:Story.VerbalStory"
+                                  style="width:100%" rows="1" cols="1"></textarea>
+                    </div>
+                </li>
+            </ul>
+            <button class="k-button k-primary btn-form" onclick="Simpan()">Save</button> &nbsp;&nbsp;
+            <button class="k-button k-default btn-form" onclick="Back()">Cancel</button>
+        </div>
+    </div>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;">
+            <b>
+                Online Test
+                System - Admin Site
+            </b>
+        </span>
+    </div>
+    <div class="demo-section k-content">
+        <div id="content" class="toogle_header">
+            <div class="box1" id="boox">
+                <ul data-role="panelbar">
+                    <li class="k-state-active">
+                        <span data-bind="html: title"></span>
+                        <div id="filter">
+                            <br />
+                            <ul class="form-content">
+                                <li>
+                                    <label>Q & A Code<span class="mandatory">*</span> </label>
+                                    <input id="QnACode" type="text" name="QnACode" class="qnaCode" style="width: 19.69%;" disabled="disabled" data-bind="value:QnACode" placeholder="Q and A Code" />
+                                </li>
+                                <li>
+                                    <label>Select Test<span class="mandatory">*</span></label>
+                                    <input id="TestTypeName" name="TestTypeName" type="text" class="" data-role="combobox" style="width: 20%;" data-bind="value:TestTypeName" />
+                                    <input id="TestToolName" name="TestToolName" type="text" class="" data-role="combobox" style="width: 20%;" data-bind="value:TestToolName" />
+                                    <input id="SubTestName" name="SubTestName" type="text" class="" data-role="combobox" style="width: 20%;" data-bind="value:SubTestName" />
+                                </li>
+                                <li>
+                                    <label>Display Status</label>
+                                    <input type="checkbox" id="display_status" class="k-checkbox" checked="checked" data-bind="checked:DisplayStatus" onchange="Display(this)" />Active
+                                </li>
+                            </ul>
+                            <br />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="column-new-tab-question">Detail Question and Answer</div>
+            <div class="column-new-tab-question-x">
+                <div class="form-normal" hidden="hidden">
+                    <ul class="form-content">
+                        <li>
+                            <label>Question Image</label>
+                        </li>
+                        <li>
+                            <label style="padding-left:140px;padding-right:120px;">
+                                <!--<img id="companyLogoPicID" src="" hidden="hidden" />
+                                <img id="companyLogoPic" src="" style="background: no-repeat url(../../../Images/add-picture.jpg) center; border: thin" width="220" height="145" />
+                                <input name="companyLogo" id="companyLogo" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.companyLogoChange(this, this.files)" />-->
+                                <img id="mediaPic0" src="" hidden="hidden" />
+                                <img id="mediaDisplay0" src="" class="backImage" width="100%" height="100%" />
+                                <input name="media0" id="media0" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                            </label>
+                            <!--<input type="hidden" id="companyLogoId1" name="companyLogoId1" value="0" />-->
+                            <input type="hidden" id="mediaId0" name="mediaId0" value="0" />
+                            <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                        </li>
+                        <li>
+                            <label style="padding-left:140px;padding-right:120px;"><span>* Max file size 2Mb</span><br /></label>
+                        </li>
+                        <li>
+                            <label>Question Text <span class="mandatory">*</span></label>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <textarea id="questionText" name="QuestionText" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value:Normal.QuestionText"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div id="formAddLayout">
+                                <label></label>
+                                <button class="k-button k-primary btn-form" nomor="4" id="btnAnswerLayout" onclick="btnAnswerLayout(this)">Add Answer</button>*Max 7<br />
+                            </div>
+                            <div id="formAddImage" hidden="hidden">
+                                <label></label>
+                                <button class="k-button k-primary btn-form" nomor="4" id="btnAnswerImage" onclick="btnAnswerImage(this)">Add Answer</button><br />
+                            </div>
+                            <label></label>
+                            <!--<span>* Max 7 Answer</span>-->
+                        </li>
+                        <li>
+                            <br />
+                            <label>Answer Type</label>
+                            <input type="text" id="typeAnswer" name="typeAnswer" data-type="combobox" data-bind="value:typeAnswer" />
+                            <span style="padding-left:5%;"> Answer Layout</span>
+                            <input type="text" id="typeLayout" name="typeLayout" data-type="combobox" data-bind="value:typeLayout" />
+                        </li>
+                        <li>
+                            <div class="pageLayout" id="pageLayout">
+                                <div class="addFormAnswer">
+                                    <label>Answer 1<span class="mandatory">*</span></label>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="AnswerNormal0" name="AnswerNormal0" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Normal.ListAnswer[0].AnswerNormal"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score<span class="mandatory">*</span></label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" name="ScoreNormal0" id="ScoreNormal0" class="k-textbox widths" data-bind="value: Normal.ListAnswer[0].ScoreNormal" /> <br />
+                                </div><br />
+                                <div class="addFormAnswer">
+                                    <label>Answer 2<span class="mandatory">*</span></label>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="AnswerNormal1" name="AnswerNormal1" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Normal.ListAnswer[1].AnswerNormal"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score<span class="mandatory">*</span></label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" name="ScoreNormal1" id="ScoreNormal1" class="k-textbox widths" data-bind="value: Normal.ListAnswer[1].ScoreNormal" /> <br />
+                                </div><br />
+                                <br />
+                                <div id="addFormAnswer"></div>
+                                <div id="addForm">
+                                    <div class="addFormAnswer" id="label2">
+                                        <label>Answer 3</label>
+                                        <a href="#" no="2" id="nom2" style="padding-left:65%;" hidden="hidden" onclick="clearFields(2, 'btnAnswerLayout');"><i class="fas fa-trash-alt"></i></a>
+                                        <div style="padding-left:140px;padding-right:120px;">
+                                            <textarea id="AnswerNormal2" name="AnswerNormal2" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Normal.ListAnswer[2].AnswerNormal"></textarea>
+                                        </div><br />
+                                        <label>Input Score</label>
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" name="ScoreNormal2" id="ScoreNormal2" class="k-textbox widths" data-bind="value: Normal.ListAnswer[2].ScoreNormal" /> <br />
+                                    </div><br />
+                                    <div class="addFormAnswer" id="label3">
+                                        <label>Answer 4</label>
+                                        <a href="#" no="3" id="nom3" style="padding-left:65%;" hidden="hidden" onclick="clearFields(3, 'btnAnswerLayout');"><i class="fas fa-trash-alt"></i></a>
+                                        <div style="padding-left:140px;padding-right:120px;">
+                                            <textarea id="AnswerNormal3" name="AnswerNormal3" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Normal.ListAnswer[3].AnswerNormal"></textarea>
+                                        </div><br />
+                                        <label>Input Score</label>
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" name="ScoreNormal3" id="ScoreNormal3" class="k-textbox widths" data-bind="value: Normal.ListAnswer[3].ScoreNormal" /> <br />
+                                    </div><br />
+                                    <div class="addFormAnswer" id="label4">
+                                        <label>Answer 5</label>
+                                        <a href="#" no="4" id="nom4" style="padding-left:65%;" onclick="clearFields(4, 'btnAnswerLayout');"><i class="fas fa-trash-alt"></i></a>
+                                        <div style="padding-left:140px;padding-right:120px;">
+                                            <textarea id="AnswerNormal4" name="AnswerNormal4" class="editor" rows="2" cols="30" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Normal.ListAnswer[4].AnswerNormal"></textarea>
+                                        </div><br />
+                                        <label>Input Score</label>
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" name="ScoreNormal4" id="ScoreNormal4" class="k-textbox widths" data-bind="value: Normal.ListAnswer[4].ScoreNormal" /> <br />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pageImage" id="pageImage" hidden="hidden">
+                                <div class="add_image">
+                                    <label>Answer 1 <span class="mandatory">*</span></label><br />
+                                    <label style="padding-left:140px;padding-right:120px;">
+                                        <label>
+                                            <img id="mediaPic1" src="" hidden="hidden" />
+                                            <img id="mediaDisplay1" src="" class="backImage" width="100%" height="100%" />
+                                            <input name="media1" id="media1" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                        </label>
+                                        <input type="hidden" id="mediaId1" name="mediaId1" value="0" />
+                                        <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                    </label>
+                                    <br />
+                                    <label style="padding-left:140px;padding-right:120px;"><span>* Max file size 2Mb</span><br /></label>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="NormalScoreImage0" name="NormalScoreImage0" data-bind="value:Normal.NormalImage[0].NormalScoreImage" class="k-textbox widths" /><br />
+                                </div>
+                                <br />
+                                <div class="add_image">
+                                    <label>Answer 2 <span class="mandatory">*</span></label><br />
+                                    <label style="padding-left:140px;padding-right:120px;">
+                                        <label>
+                                            <img id="mediaPic2" src="" hidden="hidden" />
+                                            <img id="mediaDisplay2" src="" class="backImage" width="100%" height="100%" />
+                                            <input name="media2" id="media2" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                        </label>
+                                        <input type="hidden" id="mediaId2" name="mediaId2" value="0" />
+                                        <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                    </label>
+                                    <br />
+                                    <label style="padding-left:140px;padding-right:120px;"><span>* Max file size 2Mb</span><br /></label>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="NormalScoreImage1" name="NormalScoreImage1" data-bind="value:Normal.NormalImage[1].NormalScoreImage" class="k-textbox widths" /><br />
+                                </div>
+                                <br />
+                                <!--<div class="add_image">
+                                    <label>Answer 3</label><br />
+                                    <label style="padding-left:140px;padding-right:120px;">
+                                        <label>
+                                        <img id="mediaPic3" src="" hidden="hidden" />
+                                        <img id="mediaDisplay3" src="" style="background: no-repeat url(../../../Images/add-picture.jpg) center; border: thin" width="220" height="145" />
+                                        <input name="media3" id="media3" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                    </label>
+                                    <input type="hidden" id="mediaId3" name="mediaId3" value="0" />
+                                    <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                    </label>
+                                    <br />
+                                    <label style="padding-left:140px;padding-right:120px;">
+                                        <span>* Max file size 2Mb</span><br />
+                                    </label>
+                                    <br />
+                                    <label>Input Score</label>
+                                        <input type="number" id="NormalScoreImage2" name="NormalScoreImage2" class="k-textbox widths" data-bind="value:Normal.NormalImage[2].NormalScoreImage"/><br />
+                                </div><br />-->
+                                <div id="add_image">
+                                    <div class="add_image" id="label2">
+                                        <label>Answer 3</label><br />
+                                        <a href="#" no="2" id="nom2" style="float: right;position: relative;right: 60%;" onclick="clearFields(2, `btnAnswerImage`);" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                        <label style="padding-left:140px;padding-right:120px;">
+                                            <label>
+                                                <img id="mediaPic3" src="" hidden="hidden" />
+                                                <img id="mediaDisplay3" src="" class="backImage" width="100%" height="100%" />
+                                                <input name="media3" id="media3" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                            </label>
+                                            <input type="hidden" id="mediaId3" name="mediaId3" value="0" />
+                                            <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                        </label>
+                                        <br />
+                                        <label style="padding-left:140px;padding-right:120px;"><span>* Max file size 2Mb</span><br /></label>
+                                        <br />
+                                        <label>Input Score</label>
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="NormalScoreImage2" name="NormalScoreImage2" data-bind="value:Normal.NormalImage[2].NormalScoreImage" class="k-textbox widths" /><br />
+                                    </div>
+                                    <div class="add_image" id="label3">
+                                        <label>Answer 4</label><br />
+                                        <a href="#" no="3" id="nom3" style="float: right;position: relative;right: 60%;" onclick="clearFields(3, `btnAnswerImage`);" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                        <label style="padding-left:140px;padding-right:120px;">
+                                            <label>
+                                                <img id="mediaPic4" src="" hidden="hidden" />
+                                                <img id="mediaDisplay4" src="" class="backImage" width="100%" height="100%" />
+                                                <input name="media4" id="media4" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                            </label>
+                                            <input type="hidden" id="mediaId4" name="mediaId4" value="0" />
+                                            <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                        </label>
+                                        <br />
+                                        <label style="padding-left:140px;padding-right:120px;"><span>* Max file size 2Mb</span><br /></label>
+                                        <br />
+                                        <label>Input Score</label>
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="NormalScoreImage3" name="NormalScoreImage3" data-bind="value:Normal.NormalImage[3].NormalScoreImage" class="k-textbox widths" /><br />
+                                    </div>
+                                    <div class="add_image" id="label4">
+                                        <label>Answer 5</label><br />
+                                        <a href="#" no="4" id="nom4" style="float: right;position: relative;right: 60%;" onclick="clearFields(4, `btnAnswerImage`);"><i class="fas fa-trash-alt"></i></a>
+                                        <label style="padding-left:140px;padding-right:120px;">
+                                            <label>
+                                                <img id="mediaPic5" src="" hidden="hidden" />
+                                                <img id="mediaDisplay5" src="" class="backImage" width="100%" height="100%" />
+                                                <input name="media5" id="media5" type="file" accept="image/gif, image/jpg, image/png, image/jpeg, image/bmp, image/tif" hidden="hidden" onchange="viewModel.mediaImageChange(this, this.files)" />
+                                            </label>
+                                            <input type="hidden" id="mediaId5" name="mediaId5" value="0" />
+                                            <a href="#" class="k-button" style="display: none" onclick="viewModel.mediaImageRemove(this)"><span class="fas fa-trash-alt"></span></a>
+                                        </label>
+                                        <br />
+                                        <label style="padding-left:140px;padding-right:120px;"><span>* Max file size 2Mb</span><br /></label>
+                                        <br />
+                                        <label>Input Score</label>
+                                        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="NormalScoreImage4" name="NormalScoreImage4" data-bind="value:Normal.NormalImage[4].NormalScoreImage" class="k-textbox widths" /><br />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-working" hidden="hidden">
+                    <ul class="form-content">
+                        <li>
+                            <label>Duration</label>
+                        </li>
+                        <li>
+                            <label>Per Memory<span class="mandatory">*</span></label> 
+                            <input id="WorkingMemoryDuration" type="number" name="WorkingMemoryDuration" oninput="this.value = Math.abs(this.value)" min="0" class="k-textbox duration_memory" style="width: 10%;" placeholder="Ex. 5" data-bind="value:WorkingMemory.WorkingMemoryDuration" /><span> second</span>
+                        </li>
+                        <li>
+                            <label>Transition<span class="mandatory">*</span></label>
+                            <input id="WorkingMemoryDurationTransition" oninput="this.value = Math.abs(this.value)" min="0" type="number" name="WorkingMemoryDurationTransition" class="k-textbox duration_memory" style="width: 10%;" placeholder="Ex. 5" data-bind="value:WorkingMemory.WorkingMemoryDurationTransition" /><span> second</span>
+                        </li>
+                        <li>
+                            <label>
+                                <input type="checkbox" id="WorkingMemoryPrefaceDisplay" name="WorkingMemoryPrefaceDisplay" data-bind="checked:WorkingMemory.WorkingMemoryPrefaceDisplay" onchange="DisplayPreface(this)" />Preface<span class="mandatory">*</span>
+                            </label>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <textarea id="WorkingMemoryPreface" name="WorkingMemoryPreface" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value:WorkingMemory.WorkingMemoryPreface"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <button class="k-button k-primary btn-form" id="add_working_memory" nomor="3" onclick="addWorking(this)">Add Memory</button><br />
+                                <!-- <span>*Max 7 Memory</span> -->
+                            </div>
+                        </li>
+                        <li>
+                            <div class="memory_working_page">
+                                <label>Memory 1<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="WorkingMemoryText0" name="WorkingMemoryText0" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[0].WorkingMemoryText"></textarea>
+                                </div>
+                            </div>
+                            <div class="memory_working_page">
+                                <label>Memory 2<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="WorkingMemoryText1" name="WorkingMemoryText1" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[1].WorkingMemoryText"></textarea>
+                                </div>
+                            </div>
+                            <div id="memory_working_page">
+                                <div class="memory_working_page" id="label2">
+                                    <label>Memory 3</label>
+                                    <a href="#" no="2" id="nom2" style="padding-left:65%;" onclick="clearFields(2, 'add_working_memory');" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="WorkingMemoryText2" name="WorkingMemoryText2" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[2].WorkingMemoryText"></textarea>
+                                    </div>
+                                </div>
+                                <div class="memory_working_page" id="label3">
+                                    <label>Memory 4</label>
+                                    <a href="#" no="3" id="nom3" style="padding-left:65%;" onclick="clearFields(3, 'add_working_memory');"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="WorkingMemoryText3" name="WorkingMemoryText3" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemories[3].WorkingMemoryText"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <label>Question<span class="mandatory">*</span></label>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <textarea id="WorkingMemoryQuestion" name="WorkingMemoryQuestion" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoryQuestion"></textarea>
+                            </div>
+                            <br />
+                        </li>
+                        <li>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <button class="k-button k-primary btn-form" id="btn_answer_Working" nomor="4" onclick="addAnswerWorking(this)">Add Answer</button>*Max 7<br />
+                                <!--<span>*Max 7 Answer</span>-->
+                            </div>
+                        </li>
+                        <li>
+                            <label>Answer Layout<span class="mandatory">*</span></label>
+                            <input type="text" id="WorkingMemoryLayout" name="WorkingMemoryLayout" style="width:15%;" data-role="combobox" data-text-field="Value" data-value-field="Code" data-placeholder="Select Type..." data-bind="source:AnswerLayoutList , value:WorkingMemory.WorkingMemoryLayout" />
+                        </li>
+                        <li>
+                            <div class="answer_working_page">
+                                <label>Answer 1<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="WorkingMemoryAswer0" name="WorkingMemoryAswer0" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[0].WorkingMemoryAswer"></textarea>
+                                </div>
+                                <br />
+                                <label>Input Score<span class="mandatory">*</span></label>
+                                <input type="number" id="WorkingMemoryScore0" name="WorkingMemoryScore0" class="k-textbox widths" data-bind="value:WorkingMemory.WorkingMemoriesAnswer[0].WorkingMemoryScore" /><br />
+                            </div>
+                            <br />
+                            <div class="answer_working_page">
+                                <label>Answer 2<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="WorkingMemoryAswer1" name="WorkingMemoryAswer1" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[1].WorkingMemoryAswer"></textarea>
+                                </div><br />
+                                <label>Input Score<span class="mandatory">*</span></label>
+                                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="WorkingMemoryScore1" name="WorkingMemoryScore1" class="k-textbox widths" data-bind="value:WorkingMemory.WorkingMemoriesAnswer[1].WorkingMemoryScore" /><br />
+                            </div>
+                            <br />
+                            <!--<div class="answer_working_page">
+                                <label>Answer 3<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                  <textarea id="WorkingMemoryAswer2" name="WorkingMemoryAswer2" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[2].WorkingMemoryAswer"></textarea>
+                                </div><br />
+                                <label>Input Score<span class="mandatory">*</span></label>
+                                <input type="number" id="WorkingMemoryScore2" name="WorkingMemoryScore2" class="k-textbox widths" data-bind="value:WorkingMemory.WorkingMemoriesAnswer[2].WorkingMemoryScore"/><br />
+                            </div><br />-->
+                            <div id="answer_working_page">
+                                <div class="answer_working_page" id="label2">
+                                    <label>Answer 3</label>
+                                    <a href="#" no="2" id="nom2" style="padding-left:65%;" onclick="clearFields(2, 'btn_answer_Working');" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="WorkingMemoryAswer2" name="WorkingMemoryAswer2" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[2].WorkingMemoryAswer"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="WorkingMemoryScore2" name="WorkingMemoryScore2" class="k-textbox widths" data-bind="value:WorkingMemory.WorkingMemoriesAnswer[2].WorkingMemoryScore" /><br />
+                                </div>
+                                <div class="answer_working_page" id="label3">
+                                    <label>Answer 4</label>
+                                    <a href="#" no="3" id="nom3" style="padding-left:65%;" onclick="clearFields(3, 'btn_answer_Working');" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="WorkingMemoryAswer3" name="WorkingMemoryAswer3" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[3].WorkingMemoryAswer"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="WorkingMemoryScore3" name="WorkingMemoryScore3" class="k-textbox widths" data-bind="value:WorkingMemory.WorkingMemoriesAnswer[3].WorkingMemoryScore" /><br />
+                                </div>
+                                <div class="answer_working_page" id="label4">
+                                    <label>Answer 5</label>
+                                    <a href="#" no="4" id="nom4" style="padding-left:65%;" onclick="clearFields(4, 'btn_answer_Working');"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="WorkingMemoryAswer4" name="WorkingMemoryAswer4" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: WorkingMemory.WorkingMemoriesAnswer[4].WorkingMemoryAswer"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="WorkingMemoryScore4" name="WorkingMemoryScore4" class="k-textbox widths" data-bind="value:WorkingMemory.WorkingMemoriesAnswer[4].WorkingMemoryScore" /><br />
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-verbal" hidden="hidden">
+                    <ul class="form-content">
+                        <li>
+                            <label> <button class="k-button k-primary btn-form" data-bind="click:story">Add Story</button></label>
+                        </li>
+                        <li>
+                            <div id="gridStory" data-bind="source:VerbalStoryList"></div>
+                        </li>
+                        <li>
+                            <label>Question<span class="mandatory">*</span></label>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <textarea id="VerbalQuestion" name="VerbalQuestion" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalQuestion"></textarea>
+                            </div>
+                        </li>
+                        <li>
+                            <div style="padding-left:140px;padding-right:120px;">
+                                <button class="k-button k-primary btn-form" id="VerbalAsnwerBtn" nomor="4" onclick="addAnswerVerbal(this)">Add Answer</button> *Max 7<br />
+                                <!--<span>*Max 7 Answer</span>-->
+                            </div>
+                        </li>
+                        <li>
+                            <label>Answer Layout<span class="mandatory">*</span></label>
+                            <input type="text" id="VerbalLayout" name="VerbalLayout" style="width:15%;" data-role="combobox" data-text-field="Value" data-value-field="Code" data-placeholder="Select Type..." data-bind="source:AnswerLayoutList , value:Verbal.VerbalLayout" />
+                        </li>
+                        <li>
+                            <div class="answer_verbal_page">
+                                <label>Answer 1<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="VerbalAnswer0" name="VerbalAnswer0" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalAnswers[0].VerbalAnswer"></textarea>
+                                </div><br />
+                                <label>Input Score<span class="mandatory">*</span></label>
+                                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="VerbalScore0" name="VerbalScore0" class="k-textbox widths" data-bind="value:Verbal.VerbalAnswers[0].VerbalScore" /><br />
+                            </div>
+                            <br />
+                            <div class="answer_verbal_page">
+                                <label>Answer 2<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                    <textarea id="VerbalAnswer1" name="VerbalAnswer1" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalAnswers[1].VerbalAnswer"></textarea>
+                                </div>
+                                <br />
+                                <label>Input Score<span class="mandatory">*</span></label>
+                                <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="VerbalScore1" name="VerbalScore1" class="k-textbox widths" data-bind="value:Verbal.VerbalAnswers[1].VerbalScore" /><br />
+                            </div>
+                            <br />
+                            <!--<div class="answer_verbal_page">
+                                <label>Answer 3<span class="mandatory">*</span></label>
+                                <div style="padding-left:140px;padding-right:120px;">
+                                  <textarea id="VerbalAnswer2" name="VerbalAnswer2" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalAnswers[2].VerbalAnswer"></textarea>
+                                </div><br />
+                                <label>Input Score<span class="mandatory">*</span></label>
+                                <input type="number" id="VerbalScore2" name="VerbalScore2" class="k-textbox widths" data-bind="value:Verbal.VerbalAnswers[2].VerbalScore"/><br />
+                            </div><br />-->
+                            <div id="AddAswerVerbalLayout">
+                                <div class="answer_verbal_page" id="label2">
+                                    <label>Answer 3</label>
+                                    <a href="#" no="2" id="nom2" style="padding-left:65%;" onclick="clearFields(2, `VerbalAsnwerBtn`);" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="VerbalAnswer2" name="VerbalAnswer2" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalAnswers[2].VerbalAnswer"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="VerbalScore2" name="VerbalScore2" class="k-textbox widths" data-bind="value:Verbal.VerbalAnswers[2].VerbalScore" /><br />
+                                </div>
+                                <div class="answer_verbal_page" id="label3">
+                                    <label>Answer 4</label>
+                                    <a href="#" no="3" id="nom3" style="padding-left:65%;" onclick="clearFields(3, `VerbalAsnwerBtn`);" hidden="hidden"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="VerbalAnswer3" name="VerbalAnswer3" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalAnswers[3].VerbalAnswer"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="VerbalScore3" name="VerbalScore3" class="k-textbox widths" data-bind="value:Verbal.VerbalAnswers[3].VerbalScore" /><br />
+                                </div>
+                                <div class="answer_verbal_page" id="label4">
+                                    <label>Answer 5</label>
+                                    <a href="#" no="4" id="nom4" style="padding-left:65%;" onclick="clearFields(4, `VerbalAsnwerBtn`);"><i class="fas fa-trash-alt"></i></a>
+                                    <div style="padding-left:140px;padding-right:120px;">
+                                        <textarea id="VerbalAnswer4" name="VerbalAnswer4" rows="2" cols="30" class="editor" style="height:140px; width:80%;" aria-label="editor" data-bind="value: Verbal.VerbalAnswers[4].VerbalAnswer"></textarea>
+                                    </div>
+                                    <br />
+                                    <label>Input Score</label>
+                                    <input type="number" min="0" oninput="this.value = Math.abs(this.value)" id="VerbalScore4" name="VerbalScore4" class="k-textbox widths" data-bind="value:Verbal.VerbalAnswers[4].VerbalScore" /><br />
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br />
+            <button class="btn-form k-button k-primary" data-bind="click: save">Save</button>
+            <button class="btn-form k-button k-default" data-bind="click: cancel">Cancel</button>
+            <a href="#" id="PreviewQuestion" target="_blank" class="btn-form k-button k-primary" data-bind="click: preview">Preview</a><br />
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+            
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+    
+    
+
+    <script>
+        clearFields = function (count, idAttr) {
+            var classField = idAttr == "add_working_memory" ? "memory_working_page" :
+                idAttr == "btnAnswerLayout" ? "addFormAnswer" : idAttr == "btn_answer_Working" ? "answer_working_page" : idAttr == "btnAnswerImage" ? "add_image" : "answer_verbal_page";
+            if (viewModel.QnACode == '' && idAttr == "btnAnswerLayout") {
+                $('.' + classField + '#label' + count).remove();
+                $('.' + classField +'>'+ 'a#nom' + (count - 1)).removeAttr('hidden');
+                $('#' + idAttr).removeAttr('nomor');
+                $('#' + idAttr).attr('nomor', (count - 1));
+                $('#' + idAttr).css({ "display": "inline" });
+            } else {
+                $('.' + classField + '#label' + count).remove();
+                $('.' + classField + '>' + 'a#nom' + (count - 1)).removeAttr('hidden');
+                $('#' + idAttr).removeAttr('nomor');
+                $('#' + idAttr).attr('nomor', (count - 1));
+                $('#' + idAttr).css({ "display": "inline" });
+                if (idAttr == "add_working_memory") {
+                    AnswerMemoryAttr(count, idAttr);
+                }
+            }
+            //return;
+        }
+    </script>
+</body>
+</html>

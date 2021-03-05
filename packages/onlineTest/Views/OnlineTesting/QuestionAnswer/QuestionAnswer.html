@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Baze is a front-end starter template">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <script type="text/javascript">
+        var __CACHE_BUSTER = (new Date()).getTime();
+
+        var __CACHE_BUSTED_STYLES = [
+			"../../../Content/Site.css",
+            "../../../Content/kendo/2014.1.423/kendo.common.min.css",
+            "../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css",
+           "../../../Content/fontawesome/fontawesome-free-5.9.0-web/css/fontawesome.min.css",
+        ];
+
+        var __CACHE_BUSTED_SCRIPTS_USED = [
+            "../../../Scripts/kendo/2014.1.423/jquery.min.js",
+            "../../../Scripts/kendo/2014.1.423/kendo.web.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/fontawesome.min.js",
+            "../../../Content/fontawesome/fontawesome-free-5.9.0-web/js/all.js",
+            "../../../Scripts/Common/sweet.js",
+            "../../../Scripts/Common/MessageBox.js",
+            "../../../Scripts/Common/constant.js",
+            "../../../Scripts/Common/common.js",
+			"../../../Scripts/Common/localStore.js",
+            "../../../Scripts/Views/OnlineTesting/QuestionAnswer/QuestionAnswer.js",
+			"../../../Scripts/Views/OnlineTesting/QuestionAnswer/QuestionAnswerViewModel.js",
+            "../../../Scripts/Views/OnlineTesting/GetHome/GetHome.js",
+			"../../../Scripts/Views/OnlineTesting/GetHome/dropDownSubTest.js"
+
+        ]
+    </script>
+    <script type="text/javascript">
+        __CACHE_BUSTED_STYLES.forEach(function (s) {
+            document.write('<link rel="stylesheet" type="text/css" href="' + s + '?version=' + __CACHE_BUSTER + '"  \/>');
+        });
+    </script>
+<title>Question And Answer</title>
+</head>
+<body>
+    <div class="column-new-tab-question-x" >
+        <img src="../../../Images/AIStandard-Logo.gif"/><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">Question and Answer</span>
+    </div>
+    <div id="dialog">
+        <div class="list-data" hidden="hidden">
+            <ul class="form-content">
+                <li>
+                    <div class="btn-popup-page">
+                        <a href="#/QuestionAnswerCategory" class="k-button k-primary btn-popup" value="1" onClick="PageLoad(this)">Normal</a>
+                        <br /><br />
+                        <a href="#" class="k-button k-primary btn-popup" value="2" onClick="PageLoad(this)">Working Memory</a>
+                        <br /><br />
+                        <a href="#" class="k-button k-primary btn-popup" value="3" onClick="PageLoad(this)">Verbal Memory</a>
+                        <br />
+                    </div>
+                    <br />
+                    <div class="btn-page-back">
+                        <a href="" class="k-button k-default btn-form" onClick="CloseWindow()">Back</a>
+                    </div>
+                    <br />
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br />
+    <div class="demo-section k-content">
+        <div id="content" class="toogle_header">
+            <ul class="form-content">
+                <li>
+                    <label>
+                        Test Tool
+                    </label>
+                    <input id="TestToolName" type="text" name="TestToolName" data-role="combobox" class="testTool" style="width: 20%;" data-bind="value:TestToolName" />
+                    <label style="padding-left:10%">
+                        Question
+                    </label>
+                    <input id="Question" name="Question" class="k-textbox" type="text" style="width: 20%;" data-bind="value:Question" />
+                </li>
+                <li>
+                    <label>
+                        Sub Test
+                    </label>
+                    <input id="SubTestName" name="SubTestName" type="text" data-role="combobox" class="subTestName" style="width: 20%;" data-bind="value:SubTestName" />
+                    <label style="padding-left:10%">
+                        Display Status
+                    </label>
+                    <input type="checkbox" id="display_status" class="k-checkbox" checked="checked" data-bind="checked: DisplayStatus" />
+                    Active
+                </li>
+                <li>
+                    <br />
+                    <button type="submit" id="btnSearch" class="k-button k-primary btn-form" data-bind="click:search">Search</button>&nbsp;
+                    <button type="submit" id="btnClear" class="k-button k-default btn-form" data-bind="click:clear">Clear</button>&nbsp;
+                </li>
+                <li>
+                    <br />
+                    <button class="k-button k-primary btn-form-x" id="btnAddQuestion" edit="false" onclick="kendoWindow(this)">Add Question and Answer</button>
+                </li>
+            </ul>
+        </div>
+        <div id="gridTable"></div>
+    </div>
+    <div id="dialog"></div>
+    <script type="text/javascript">
+        __CACHE_BUSTED_SCRIPTS_USED.forEach(function (s) {
+            
+            document.write('<script type="text/javascript" src="' + s + ('?version=' + __CACHE_BUSTER) + '"><\/script>');
+            // document.write('<script type="text/javascript" src="' + s + (isLibrary ? '' : '') + '"><\/script>');
+        });
+    </script>
+    
+    
+</body>
+</html>

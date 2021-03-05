@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+    <script type="text/javascript" src="../../../Scripts/Common/sweet.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/common.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/constant.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/localStore.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/MessageBox.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/SubTest/SubTestPreviewFormMultiple.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/SubTest/SubTestPreviewInstructionViewModel.js"></script>
+    <title>Sub Test-Preview</title>
+    <meta charset="utf-8" />
+    <style>
+        .backImage {
+            width: auto; /*100%;*/
+            height: auto; /*100%;*/
+            /*background-image: url(../../../Images/add-picture.jpg);*/
+            border: thin
+        }
+
+        .prev-heder {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: lightgray;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .HeadWorking {
+            text-align: center;
+            font-size: 26px;
+            position: absolute;
+            padding-top: 200px !important;
+            right: 10%;
+            left: 10%;
+        }
+
+        .prev-footer {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            background-color: lightgray;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .prev-box {
+            position: relative;
+            border: 1px solid royalblue;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .prev-preface {
+            position: relative;
+            /*border:1px solid royalblue;*/
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .prev-colom {
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-color: white;
+            text-align: justify;
+            font-size: 14px;
+        }
+
+        .topright {
+            padding-top: 20px;
+            position: absolute;
+            right: 16px;
+            font-size: 14px;
+        }
+
+        .topleft {
+            padding-top: 20px;
+            position: absolute;
+            left: 16px;
+            font-size: 14px;
+        }
+
+        #ListMemories {
+            position: relative;
+        }
+
+            #ListMemories > div {
+                position: absolute;
+            }
+    </style>
+</head>
+<body>
+    <div class="prev-box" id="PreviewInstruction">
+        <div class="colomup">
+            <span class="headup">Question &nbsp;<span data-bind="html: SubTestName"></span>-Preview</span>
+        </div>
+        <br />
+
+        <div class="prev-heder"><span data-bind="html:title" class=""></span></div>
+        <div class="prev-colom">
+            <span data-bind="html:description" class=""></span>
+        </div>
+        <div class="prev-footer">
+            <span data-bind="html:disclaimer" class=""></span>
+        </div>
+
+        <div class="topright">
+            <button class="k-button k-primary btn-form" data-bind="click: next">Next</button>
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="colomup">
+            <span class="headup"></span>
+        </div>
+    </div>
+    <div class="prev-box" id="PreviewVerbal" hidden="hidden">
+        <div class="colomup">
+            <span class="headup">Question &nbsp;<span data-bind="html: SubTestName"></span>-Preview</span>
+        </div>
+        <br />
+        <div class="NormalMemories" hidden="hidden">
+            <div class="prev-heder"><span data-bind="html:SampleNormalTitle" class=""></span></div>
+            <div class="prev-colom">
+                <span data-bind="html:SampleNormalIntroduction" class=""></span>
+            </div>
+            <div class="prev-footer">
+                <span data-bind="html:NormalDisclaimer" class=""></span>
+            </div>
+        </div>
+        <div class="VerbalMemories" hidden="hidden">
+            <div class="prev-heder"><span data-bind="html:VerbalMemoryTitle" class=""></span></div>
+            <div class="prev-colom">
+                <span data-bind="html:VerbalMemoryStory" class=""></span>
+            </div>
+            <div class="prev-footer">
+                <span data-bind="html:VerbalMemoryDisclaimer" class=""></span>
+            </div>
+        </div>
+        <div class="WorkingMemories" hidden="hidden">
+            <!--<div class="prev-heder"><span data-bind="html:WorkingMemoryTitle" class=""></span></div>-->
+            <div class="prev-colom" id="prefaceShow">
+                <center>
+                    <span data-bind="html:WorkingMemoryPreface" style="font-size:40px;"></span>
+                </center>
+            </div>
+            <!--<div class="prev-footer">
+                <span data-bind="html:WorkingMemoryDisclaimer" class=""></span>
+            </div>-->
+        </div>
+        <div class="topleft" id="prevSample">
+            <button class="k-button k-default btn-form" data-bind="click: prev">Back</button>
+        </div>
+        <div class="topright" id="nextSample">
+            <button class="k-button k-primary btn-form" data-bind="click: next3">Next</button>
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="colomup" id="footer-preface">
+            <span class="headup"></span>
+        </div>
+    </div>
+    <div class="prev-box" id="PreviewSample" hidden="hidden">
+        <div class="colomup">
+            <span class="headup">Question &nbsp;<span data-bind="html: SubTestName"></span>-Preview</span>
+        </div>
+        <br />
+
+        <div class="prev-heder">
+            <div class="verbalPrev" hidden="hidden">
+                <span data-bind="html:VerbalMemoryTitle" class=""></span>
+            </div>
+            <div class="workingPrev" hidden="hidden">
+                <span data-bind="html:WorkingMemoryTitle" class=""></span>
+            </div>
+            <div class="normalPrev" hidden="hidden">
+                <span data-bind="html:SampleNormalTitle" class=""></span>
+            </div>
+        </div>
+        <div class="prev-colom">
+            <div class="verbalPrev" hidden="hidden">
+                <span data-bind="html:VerbalMemoryQuestion" class="">a</span><br /><br />
+            </div>
+            <div class="workingPrev" hidden="hidden">
+                <span data-bind="html:WorkingMemoryQuestion" class=""></span><br /><br />
+            </div>
+            <div class="normalPrev" hidden="hidden">
+                <img src="" id="NormalQuestionImage" class="backImage" width="100%" height="100%" />
+                <br />
+                <span data-bind="html:NormalQuestion" class=""></span><br /><br />
+            </div>
+            <div id="Horizontal" style="width:100%;" hidden="hidden">
+
+            </div>
+            <div id="Vertikal" style="width:100%;" hidden="hidden">
+
+            </div>
+            <div id="ImageAnswer" hidden="hidden">
+                <div id="Img3"></div><br /><br />
+                <div id="Img2"></div>
+
+            </div>
+            <br />
+            <div class="verbalPrev" hidden="hidden">
+                <span data-bind="html:VerbalMemoryExplaination" class="VerbalMemoryExplaination"></span>
+            </div>
+            <div class="workingPrev" hidden="hidden">
+                <span data-bind="html:WorkingMemoryExplaination" class="WorkingMemoryExplaination"></span>
+            </div>
+            <div class="normalPrev" hidden="hidden">
+                <span data-bind="html:NormalExplaination" class="NormalExplaination"></span>
+            </div>
+        </div>
+        <div class="prev-footer">
+            <div class="verbalPrev" hidden="hidden">
+                <span data-bind="html:VerbalMemoryDisclaimer" class=""></span>
+            </div>
+            <div class="workingPrev">
+                <span data-bind="html:WorkingMemoryDisclaimer" class=""></span>
+            </div>
+            <div class="normalPrev" hidden="hidden">
+                <span data-bind="html:NormalDisclaimer" class=""></span>
+            </div>
+        </div>
+        <div class="listButton">
+            <div class="topleft">
+                <button class="k-button k-default btn-form" data-bind="click: prev2">Back</button>
+            </div>
+            <div class="topright">
+                <button class="k-button k-primary btn-form" data-bind="click: next4">Next</button>
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="colomup" id="backFooter">
+            <span class="headup"></span>
+        </div>
+    </div>
+
+    <div class="prev-box" id="PreviewConfirmation" hidden="hidden">
+        <div class="colomup">
+            <span class="headup">Question &nbsp;<span data-bind="html: SubTestName"></span>-Preview</span>
+        </div>
+        <br />
+
+        <div class="prev-heder"><span data-bind="html:ConfirmationTitle" class=""></span></div>
+        <div class="prev-colom">
+            <span data-bind="html:ConfirmationDescription" class=""></span>
+        </div>
+        <div class="prev-footer">
+            <span data-bind="html:ConfirmationDisclaimer" class=""></span>
+        </div>
+        <div class="topleft">
+            <button class="k-button k-default btn-form" data-bind="click: prev3">Back</button>
+        </div>
+        <!--<div class="topright">
+            <button class="k-button k-primary btn-form" data-bind="click: next2">Next</button>
+        </div>-->
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="colomup">
+            <span class="headup"></span>
+        </div>
+    </div>
+    <div class="" id="PreviewWorking" hidden="hidden">
+        <div class="colomup">
+            <span class="headup">Question &nbsp;<span data-bind="html: SubTestName"></span>-Preview</span>
+        </div>
+        <br />
+
+        <!--<div class="prev-heder"><span data-bind="html:WorkingMemoryTitle" class=""></span></div>-->
+        <center>
+            <div id="titik"></div>
+            <div class="prev-colom" id="ListMemories">
+                <!--<span data-bind="html:ConfirmationDescription" class=""></span>-->
+            </div>
+        </center>
+        <!--<div class="prev-footer">
+            <span data-bind="html:WorkingMemoryDisclaimer" class=""></span>
+        </div>-->
+        <br />
+        <br />
+        <br />
+        <br />
+        <!--<div class="colomup">
+            <span class="headup"></span>
+        </div>-->
+    </div>
+    <div id="introWorking">
+
+    </div>
+
+    <div id="prefaceWorking"></div>
+    <script>
+
+    </script>
+</body>
+</html>

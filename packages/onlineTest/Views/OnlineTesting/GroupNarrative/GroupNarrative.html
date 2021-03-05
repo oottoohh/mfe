@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../../../Content/bootstrap/layout-grid/bootstrap.css" />
+    <link href="../../../Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.common.min.css" />
+    <link rel="stylesheet" href="../../../Content/kendo/2014.1.423/kendo.bootstrap.min.css" />
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/kendo/2014.1.423/kendo.web.min.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/MessageBox.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/sweet.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/common.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Common/constant.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/GroupNarrative/GroupNarrative.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/GroupNarrative/GroupNarrativeViewModel.js"></script>
+    <script type="text/javascript" src="../../../Scripts/Views/OnlineTesting/GetReport/GetReport.js"></script>
+    <title>List of Group Narratives</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../Content/Site.css" />
+
+</head>
+
+<body>
+    <div class="column-new-tab-question-x">
+        <img src="../../../Images/AIStandard-Logo.gif" /><span style="padding-left:21%; font-size:20px;"><b>Online Test System - Admin Site</b></span>
+    </div>
+    <div class="colomup">
+        <span class="headup">List of Group Narratives</span>
+    </div>
+    <br />
+    <div id="example">
+
+        <div class="demo-section k-content">
+            <ul class="form-content">
+                <li>
+                    <div class="row">
+                        <div class="col-xs-5">
+                            <div class="col" style="margin-bottom:3%;">
+                                <label>Company </label>
+                                <input id="CompanyList" name="CompanyList" data-role="combobox" style="width:250px" data-bind="value: CompanyList"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-5">
+                            <label>Title </label>
+                            <input class="k-textbox" id="NarrativeGroupTitle" name="NarrativeGroupTitle" type="text" style="width:250px" data-bind="value: NarrativeGroupTitle" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-5">                            
+                            <label>Mapping Report</label>
+                            <input id="MappingReport" name="MappingReport" data-role="combobox" style="width:250px;" data-bind="value: MappingReport" />
+                        </div>
+                        <div class="col-xs-5">
+                            <label > Display Status</label>
+                            <input type="checkbox" name="DisplayStatus" id="DisplayStatus" data-role="checkbox" data-bind="checked: DisplayStatus" onchange="Display(this)" /> Active
+                        </div>                        
+                    </div>                   
+                </li>
+                <br />
+                <li>
+                    <button id="btn_seacrh" class="k-button k-primary btn-form" data-bind="click: search">Search</button>&nbsp;
+                    <button id="btn_clear" class="k-button btn-form" data-bind="click: clear">Clear</button>
+                </li>
+                <li>
+                    <a href="#" id="addMapping" class="k-button k-primary btn-form" data-bind="click: addGroup">Add Group</a>
+                </li>
+            </ul>
+
+
+        </div>
+        <br />
+        <table id="grid" data-bind="source: CompetencyGrid">
+        </table>
+
+    </div>
+</body>
+</html>
